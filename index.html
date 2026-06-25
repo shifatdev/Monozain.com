@@ -1,146 +1,345 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
   <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Monozain | Beauty in Simplicity</title>
-    <meta name="description" content="Monozain is a refined lifestyle brand built around beauty, simplicity, and quiet confidence. Discover minimal essentials with a premium finish.">
-    <meta name="keywords" content="Monozain, minimalist brand, beauty in simplicity, premium lifestyle, elegant essentials, modern design">
-    <meta name="author" content="Monozain">
-    <meta name="robots" content="index, follow">
-    <meta name="theme-color" content="#08090a">
-    <link rel="canonical" href="https://monozain.com/">
-    <link rel="icon" type="image/png" href="Images/mz-favicon.png">
-    <link rel="apple-touch-icon" href="Images/mz-favicon.png">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <meta property="og:type" content="website">
-    <meta property="og:site_name" content="Monozain">
-    <meta property="og:title" content="Monozain | Beauty in Simplicity">
-    <meta property="og:description" content="A refined lifestyle brand shaped by minimal design, premium details, and quiet confidence.">
-    <meta property="og:url" content="https://monozain.com/">
-    <meta property="og:image" content="https://monozain.com/Images/mz-og-banner.png">
-    <meta property="og:image:secure_url" content="https://monozain.com/Images/mz-og-banner.png">
-    <meta property="og:image:width" content="1734">
-    <meta property="og:image:height" content="907">
-    <meta property="og:image:alt" content="Monozain brand banner with gold logo on a dark luxury background">
+    <!-- Primary SEO -->
+    <title>Monozain - Beauty in Simplicity</title>
+    <meta
+      name="description"
+      content="Monozain is a curated lifestyle brand exploring beauty in simplicity across fashion, technology, living spaces, and everyday writing."
+    />
+    <meta
+      name="keywords"
+      content="Monozain, minimalist lifestyle, beauty in simplicity, fashion, tech, interiors, journal, curated brand"
+    />
+    <meta name="author" content="Monozain" />
+    <meta name="robots" content="index, follow" />
+    <link rel="canonical" href="https://monozain.com/" />
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Monozain | Beauty in Simplicity">
-    <meta name="twitter:description" content="Minimal essentials, refined details, and a calmer way to look polished.">
-    <meta name="twitter:image" content="https://monozain.com/Images/mz-og-banner.png">
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://monozain.com/" />
+    <meta property="og:title" content="Monozain — Beauty in Simplicity" />
+    <meta
+      property="og:description"
+      content="Curated beauty across fashion, technology, living, and everyday life."
+    />
+    <meta
+      property="og:image"
+      content="https://monozain.com/images/mz-og-banner.png"
+    />
+    <meta property="og:site_name" content="Monozain" />
 
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Monozain - Beauty in Simplicity" />
+    <meta
+      name="twitter:description"
+      content="Curated beauty across fashion, technology, living, and everyday life."
+    />
+    <meta
+      name="twitter:image"
+      content="https://monozain.com/images/mz-og-banner.png"
+    />
+
+    <!-- Schema.org -->
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
         "@type": "Organization",
         "name": "Monozain",
-        "url": "https://monozain.com/",
-        "logo": "https://monozain.com/Images/monozain-logo.png",
-        "slogan": "Beauty in simplicity"
+        "url": "https://monozain.com",
+        "image": "https://monozain.com/images/mz-favicon.png",
+        "description": "A curated lifestyle brand exploring beauty in simplicity.",
+        "slogan": "Beauty in simplicity."
       }
     </script>
-    <link rel="preload" as="image" href="Images/mz-og-banner.png">
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="icon" href="images/mz-favicon.png" sizes="any" />
+
+    <link rel="shortcut icon" type="image/png" href="images/mz-favicon.png" />
+
+    <link rel="apple-touch-icon" href="images/mz-favicon.png" />
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+
+    <link rel="stylesheet" href="style.css" />
   </head>
   <body>
-    <header class="site-header" aria-label="Primary navigation">
-      <a class="brand-mark" href="#top" aria-label="Monozain home">
-        <img src="Images/mz-favicon.png" alt="" width="40" height="40">
-        <span>Monozain</span>
+    <!-- ── NAVBAR ───────────────────────────────────────── -->
+    <nav role="navigation" aria-label="Main navigation">
+      <a class="nav-logo" href="/" aria-label="Monozain home">
+        <span class="nav-logo-name">Monozain</span>
+        <span class="nav-logo-tag">Beauty in simplicity</span>
       </a>
-      <nav class="nav-links" aria-label="Main menu">
-        <a href="#craft">Craft</a>
-        <a href="#signature">Signature</a>
-        <a href="#contact">Contact</a>
-      </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch to light mode" aria-pressed="false">
-        <span class="toggle-icon" aria-hidden="true"></span>
-        <span class="toggle-label">Dark</span>
-      </button>
-    </header>
 
-    <main id="top">
-      <section class="hero" aria-labelledby="hero-title">
-        <picture class="hero-media">
-          <img src="Images/mz-banner.png" alt="Monozain gold logo with the words Beauty in simplicity on a dark premium set">
-        </picture>
-        <div class="hero-shade" aria-hidden="true"></div>
-        <div class="hero-content">
-          <p class="eyebrow">Beauty in simplicity</p>
-          <h1 id="hero-title">Monozain</h1>
-          <p class="hero-copy">A refined lifestyle brand for people who prefer presence over excess, precision over noise, and details that feel quietly unforgettable.</p>
-          <div class="hero-actions">
-            <a class="button primary" href="#signature">Explore the brand</a>
-            <a class="button secondary" href="#contact">Start a conversation</a>
-          </div>
-        </div>
-      </section>
+      <ul class="nav-links" role="list">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#fashion">Fashion</a></li>
+        <li><a href="#tech">Tech</a></li>
+        <li><a href="#living">Living</a></li>
+        <li><a href="#journal">Journal</a></li>
+      </ul>
 
-      <section class="intro" aria-label="Brand highlights">
-        <div>
-          <span class="stat">01</span>
-          <p>Minimal identity with a premium finish.</p>
-        </div>
-        <div>
-          <span class="stat">02</span>
-          <p>Designed to feel calm, polished, and memorable.</p>
-        </div>
-        <div>
-          <span class="stat">03</span>
-          <p>Built for digital, social, and product-led moments.</p>
-        </div>
-      </section>
+      <div class="nav-right">
+        <button class="theme-pill" id="themeToggle" aria-label="Toggle theme">
+          <i
+            data-lucide="sun"
+            id="iconSun"
+            style="width: 14px; height: 14px"
+          ></i>
+          <i
+            data-lucide="moon"
+            id="iconMoon"
+            style="width: 14px; height: 14px; display: none"
+          ></i>
+          <span id="themeLabel">Light</span>
+        </button>
+        <button
+          class="mobile-menu-btn"
+          id="mobileMenuBtn"
+          aria-label="Open menu"
+          aria-expanded="false"
+        >
+          <i
+            data-lucide="ellipsis-vertical"
+            style="width: 16px; height: 16px"
+          ></i>
+        </button>
+      </div>
+    </nav>
 
-      <section class="section split" id="craft">
-        <div class="section-copy">
-          <p class="eyebrow">The Monozain standard</p>
-          <h2>Quiet luxury, sharpened for modern life.</h2>
-          <p>Monozain pairs restraint with warmth: a clean visual language, champagne-toned details, and a confident sense of space. Every touchpoint is made to feel considered without becoming complicated.</p>
-        </div>
-        <div class="feature-grid" aria-label="Brand principles">
-          <article>
-            <span>Clarity</span>
-            <p>Simple structures that make the brand easy to recognize and easy to trust.</p>
-          </article>
-          <article>
-            <span>Texture</span>
-            <p>Subtle contrast, polished light, and tactile cues that add depth.</p>
-          </article>
-          <article>
-            <span>Balance</span>
-            <p>A refined mix of dark elegance and bright editorial confidence.</p>
-          </article>
-          <article>
-            <span>Memory</span>
-            <p>A visual signature that lingers after the first impression.</p>
-          </article>
-        </div>
-      </section>
+    <!-- Mobile floating dropdown -->
+    <div
+      class="mobile-menu"
+      id="mobileMenu"
+      role="menu"
+      aria-label="Navigation menu"
+    >
+      <a href="#home" role="menuitem"><i data-lucide="house"></i>Home</a>
+      <a href="#fashion" role="menuitem"><i data-lucide="shirt"></i>Fashion</a>
+      <a href="#tech" role="menuitem"><i data-lucide="cpu"></i>Tech</a>
+      <a href="#living" role="menuitem"><i data-lucide="sofa"></i>Living</a>
+      <a href="#journal" role="menuitem"
+        ><i data-lucide="pen-line"></i>Journal</a
+      >
+      <div class="mobile-menu-divider"></div>
+      <a href="#notify" role="menuitem"
+        ><i data-lucide="bell"></i>Get notified</a
+      >
+    </div>
 
-      <section class="section signature" id="signature">
-        <div class="signature-panel">
-          <img src="Images/monozain-logo.png" alt="Monozain logo">
+    <!-- ── HERO ─────────────────────────────────────────── -->
+    <section class="hero" id="home" aria-label="Hero">
+      <div class="hero-orb" aria-hidden="true"></div>
+
+      <div class="hero-eyebrow" aria-hidden="true">A new kind of beauty</div>
+
+      <h1 class="hero-wordmark" id="wordmark" aria-label="Monozain"></h1>
+
+      <p class="hero-tagline">Beauty in simplicity</p>
+
+      <div class="hero-meaning" role="region" aria-label="Brand name meaning">
+        <div class="meaning-part">
+          <p class="meaning-lang">Japanese &middot; 物 (Mono)</p>
+          <p class="meaning-word">Mono</p>
+          <p class="meaning-def">
+            Things, objects, matter — the essence of what exists in the physical
+            world.
+          </p>
+        </div>
+        <div class="meaning-part">
+          <p class="meaning-lang">Arabic &middot; زين (Zain)</p>
+          <p class="meaning-word">Zain</p>
+          <p class="meaning-def">
+            Beauty, grace, adornment — the quality that makes something worth
+            noticing.
+          </p>
+        </div>
+        <div class="meaning-part">
+          <p class="meaning-lang">Together</p>
+          <p class="meaning-word">Monozain</p>
+          <p class="meaning-def">
+            The beauty of things. A name born from two languages, one
+            philosophy.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── COMING SOON ───────────────────────────────────── -->
+    <section class="coming-soon-section" id="notify" aria-label="Coming soon">
+      <div class="cs-pill">Launching soon</div>
+      <h2>Something considered<br />is on its way.</h2>
+      <p>
+        We're building slowly, carefully. Be the first to know when Monozain
+        opens its doors.
+      </p>
+      <div
+        class="notify-form"
+        role="form"
+        aria-label="Email notification signup"
+      >
+        <input
+          type="email"
+          id="notifyEmail"
+          placeholder="your@email.com"
+          aria-label="Email address"
+        />
+        <button type="button" id="notifyBtn">Notify me</button>
+      </div>
+    </section>
+
+    <!-- ── CATEGORIES ────────────────────────────────────── -->
+    <section class="categories-section" id="categories" aria-label="Categories">
+      <div class="section-wrap">
+        <div class="section-header reveal">
           <div>
-            <p class="eyebrow">Signature</p>
-            <h2>Beauty that does not need to shout.</h2>
-            <p>From search results to social previews, Monozain now has a polished landing page that presents the brand clearly, loads fast, and feels at home in both dark and light settings.</p>
+            <p class="section-label">What we cover</p>
+            <h2 class="section-title">Four worlds, one lens.</h2>
+          </div>
+          <span class="section-badge">All coming soon</span>
+        </div>
+
+        <div class="categories-grid reveal">
+          <div class="cat-card" id="fashion" aria-label="Fashion category">
+            <span class="cat-number" aria-hidden="true">01</span>
+            <div class="cat-icon"><i data-lucide="shirt"></i></div>
+            <p class="cat-name">Fashion</p>
+            <p class="cat-desc">
+              Clothes that last. Pieces chosen not for trends but for the quiet
+              confidence of things made well — fabric, cut, and intent.
+            </p>
+            <span class="cat-pill">Coming soon</span>
+          </div>
+
+          <div class="cat-card" id="tech" aria-label="Tech category">
+            <span class="cat-number" aria-hidden="true">02</span>
+            <div class="cat-icon"><i data-lucide="cpu"></i></div>
+            <p class="cat-name">Tech</p>
+            <p class="cat-desc">
+              Tools that respect your time. Technology that solves real problems
+              without demanding your undivided attention in return.
+            </p>
+            <span class="cat-pill">Coming soon</span>
+          </div>
+
+          <div class="cat-card" id="living" aria-label="Living category">
+            <span class="cat-number" aria-hidden="true">03</span>
+            <div class="cat-icon"><i data-lucide="sofa"></i></div>
+            <p class="cat-name">Living</p>
+            <p class="cat-desc">
+              Premium furniture, considered objects, rare materials. Spaces and
+              pieces that earn their place through craft and restraint.
+            </p>
+            <span class="cat-pill">Coming soon</span>
+          </div>
+
+          <div class="cat-card" id="journal" aria-label="Journal category">
+            <span class="cat-number" aria-hidden="true">04</span>
+            <div class="cat-icon"><i data-lucide="pen-line"></i></div>
+            <p class="cat-name">Journal</p>
+            <p class="cat-desc">
+              Words worth sitting with. Essays, observations, and small
+              discoveries about beauty found in everyday life.
+            </p>
+            <span class="cat-pill">Coming soon</span>
           </div>
         </div>
-      </section>
+      </div>
+    </section>
 
-      <section class="section contact" id="contact">
-        <div>
-          <p class="eyebrow">Follow</p>
-          <h2>Owner of Monozain.</h2>
+    <!-- ── PHILOSOPHY ────────────────────────────────────── -->
+    <section class="philosophy-section" aria-label="Our philosophy">
+      <div class="philosophy-inner">
+        <div class="philosophy-left reveal">
+          <p class="ph-label">Our philosophy</p>
+          <h2>We believe beauty is never accidental.</h2>
+          <p>
+            Monozain exists to surface the things that earn their place —
+            objects, ideas, and spaces where every decision was made on purpose.
+          </p>
+          <p>
+            Not minimal for minimalism's sake. Simple because that's what's left
+            when everything unnecessary has been removed.
+          </p>
+          <div class="ph-pills">
+            <span class="ph-pill">Considered</span>
+            <span class="ph-pill">Slow living</span>
+            <span class="ph-pill">Craft</span>
+            <span class="ph-pill">Form &amp; function</span>
+            <span class="ph-pill">Restraint</span>
+          </div>
         </div>
-        <a class="button primary" href="https://shifat.dev/" target="_blank" rel="noopener noreferer">shifat.dev</a>
-      </section>
-    </main>
+        <div class="philosophy-right reveal">
+          <div class="ph-item">
+            <span class="ph-item-num">I</span>
+            <div class="ph-item-text">
+              <strong>Considered over curated</strong>
+              <span
+                >We don't collect things because they look good together. We
+                collect them because each one stands alone.</span
+              >
+            </div>
+          </div>
+          <div class="ph-item">
+            <span class="ph-item-num">II</span>
+            <div class="ph-item-text">
+              <strong>Slow over fast</strong>
+              <span
+                >We take time to understand before we publish. That's not a
+                limitation — it's the whole point.</span
+              >
+            </div>
+          </div>
+          <div class="ph-item">
+            <span class="ph-item-num">III</span>
+            <div class="ph-item-text">
+              <strong>Form follows feeling</strong>
+              <span
+                >The best design doesn't announce itself. It just makes you feel
+                something without knowing why.</span
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-    <footer>
-      <p>&copy; <span id="year"></span> Monozain. Beauty in simplicity.</p>
-      <a href="#top">Back to top</a>
+    <!-- ── FOOTER ────────────────────────────────────────── -->
+    <footer aria-label="Site footer">
+      <span class="footer-logo">Monozain</span>
+      <span class="footer-copy"
+        >&copy; 2026 Monozain. All rights reserved. Designed & Developed by
+        <a href="https://shifat.dev/" target="_blank" rel="noopener noreferrer"
+          >shifat.dev</a
+        ></span
+      >
+      <button class="theme-pill" id="themeToggle2" aria-label="Toggle theme">
+        <i
+          data-lucide="sun"
+          id="iconSun2"
+          style="width: 14px; height: 14px"
+        ></i>
+        <i
+          data-lucide="moon"
+          id="iconMoon2"
+          style="width: 14px; height: 14px; display: none"
+        ></i>
+        <span id="themeLabel2">Light</span>
+      </button>
     </footer>
+
+    <script src="script.js"></script>
   </body>
 </html>
