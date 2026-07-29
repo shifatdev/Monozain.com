@@ -30,9 +30,10 @@
 <link rel="canonical" href="https://monozain.com/">
 
 <!-- Favicon / touch icon (images/mz-favicon.png, 512x512) -->
-<link rel="icon" type="image/png" sizes="512x512" href="images/mz-favicon.png">
-<link rel="shortcut icon" type="image/png" href="images/mz-favicon.png">
-<link rel="apple-touch-icon" sizes="512x512" href="images/mz-favicon.png">
+<link rel="icon" href="images/mz-favicon.png?v=2">
+<link rel="icon" type="image/png" sizes="512x512" href="images/mz-favicon.png?v=2">
+<link rel="shortcut icon" type="image/png" href="images/mz-favicon.png?v=2">
+<link rel="apple-touch-icon" sizes="512x512" href="images/mz-favicon.png?v=2">
 
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
@@ -278,7 +279,7 @@
   .result-info { padding:14px 20px 0 20px; font-size:14px; color:var(--sub); max-width:1400px; margin:0 auto; }
 
   /* ---------- Product grid ---------- */
-  .shop-wrap { max-width:1400px; margin:0 auto; padding:14px 20px 80px 20px; }
+  .shop-wrap { max-width:1400px; margin:0 auto; padding:14px 20px 80px 20px; scroll-margin-top:90px; }
   .product-grid {
     display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:10px;
   }
@@ -494,15 +495,18 @@
 
     <div class="footer-col">
       <div class="footer-label">Shop</div>
-      <a href="#" onclick="return false;">All Categories</a>
-      <a href="#" onclick="return false;">Best Sellers</a>
-      <a href="#" onclick="return false;">New Arrivals</a>
+      <a href="#" onclick="footerShopCategory(event,'All')">All Products</a>
+      <a href="#" onclick="footerShopCategory(event,'Electronics')">Electronics</a>
+      <a href="#" onclick="footerShopCategory(event,'Men\'s Fashion')">Men's Fashion</a>
+      <a href="#" onclick="footerShopCategory(event,'Women\'s Fashion')">Women's Fashion</a>
+      <a href="#" onclick="footerShopCategory(event,'Home &amp; Living')">Home & Living</a>
     </div>
     <div class="footer-col">
-      <div class="footer-label">Support</div>
+      <div class="footer-label">Customer Care</div>
       <span class="fline">Cash on Delivery available</span>
       <span class="fline">Delivery across all districts</span>
       <span class="fline">Easy 3-day exchange</span>
+      <a href="#" onclick="return false;">Chat with us on WhatsApp</a>
     </div>
     <div class="footer-col">
       <div class="footer-label">Follow Us</div>
@@ -512,7 +516,7 @@
       <a href="https://x.com/MonozainX" target="_blank" rel="noopener" class="social-line">
         <img id="xIcon" src="https://cdn.simpleicons.org/x/0F1419" width="18" height="18" alt="X (Twitter)"> X (Twitter)
       </a>
-      <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="social-line">
+      <a href="#" onclick="return false;" class="social-line">
         <img src="https://cdn.simpleicons.org/whatsapp/25D366" width="18" height="18" alt="WhatsApp"> WhatsApp
       </a>
     </div>
@@ -607,7 +611,7 @@
   </div>
 </div>
 
-<a class="whatsapp-fab" href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+<a class="whatsapp-fab" href="#" onclick="return false;" title="Chat with us on WhatsApp">
   <img src="https://api.iconify.design/mdi:whatsapp.svg?color=%23ffffff" width="30" height="30" alt="WhatsApp">
 </a>
 
@@ -696,7 +700,24 @@ const districts = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura",
 
 /* ================= State ================= */
 let activeCat = "All";
-let cart = {}; // id -> qty
+
+/* Cart persists in localStorage. It is only ever cleared by:
+   1) a confirmed checkout (see submitOrder), or
+   2) the user removing an item / emptying the cart themselves.
+   It must survive refreshes, closed tabs, and browser restarts. */
+const CART_KEY = 'monozain-cart';
+function loadCart(){
+  try{
+    const raw = localStorage.getItem(CART_KEY);
+    if(!raw) return {};
+    const parsed = JSON.parse(raw);
+    return (parsed && typeof parsed === 'object') ? parsed : {};
+  }catch(e){ return {}; }
+}
+function saveCart(){
+  try{ localStorage.setItem(CART_KEY, JSON.stringify(cart)); }catch(e){}
+}
+let cart = loadCart(); // id -> qty
 
 /* ================= Render: category filter ================= */
 function renderFilterPanel(){
@@ -717,6 +738,11 @@ function setCategory(c){
   document.getElementById('filterPanel').classList.remove('open');
   renderFilterPanel();
   renderProducts();
+}
+function footerShopCategory(e, c){
+  e.preventDefault();
+  setCategory(c);
+  document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth', block:'start'});
 }
 document.addEventListener('click', (e) => {
   const bar = document.getElementById('filterBar');
@@ -777,6 +803,7 @@ document.addEventListener('click', (e) => {
 
 function addToCart(id){
   cart[id] = (cart[id]||0) + 1;
+  saveCart();
   updateCartBadge();
   renderCart();
   const btn = document.getElementById('btn-'+id);
@@ -792,11 +819,13 @@ function changeQty(id, delta){
   if(!cart[id]) return;
   cart[id] += delta;
   if(cart[id] <= 0) delete cart[id];
+  saveCart();
   updateCartBadge();
   renderCart();
 }
 function removeFromCart(id){
   delete cart[id];
+  saveCart();
   updateCartBadge();
   renderCart();
 }
@@ -980,6 +1009,7 @@ async function submitOrder(e){
       : "Order placed successfully! We'll contact you soon.";
     msg.className = 'form-msg success';
     cart = {};
+    saveCart();
     updateCartBadge();
     document.getElementById('checkoutForm').reset();
     try { localStorage.removeItem(DRAFT_KEY); } catch(err){}
@@ -1058,6 +1088,7 @@ function changeModalQty(delta){
 }
 function addToCartFromModal(id){
   cart[id] = (cart[id]||0) + modalQty;
+  saveCart();
   updateCartBadge();
   renderCart();
   showToast("Added to cart");
@@ -1108,6 +1139,8 @@ renderFilterPanel();
 renderProducts();
 refreshIcons();
 syncXIcon();
+updateCartBadge();
+renderCart();
 </script>
 </body>
 </html>
