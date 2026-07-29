@@ -1,345 +1,1113 @@
-<!doctype html>
-<html lang="en" data-theme="light">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Primary SEO -->
-    <title>Monozain - Beauty in Simplicity</title>
-    <meta
-      name="description"
-      content="Monozain is a curated lifestyle brand exploring beauty in simplicity across fashion, technology, living spaces, and everyday writing."
-    />
-    <meta
-      name="keywords"
-      content="Monozain, minimalist lifestyle, beauty in simplicity, fashion, tech, interiors, journal, curated brand"
-    />
-    <meta name="author" content="Monozain" />
-    <meta name="robots" content="index, follow" />
-    <link rel="canonical" href="https://monozain.com/" />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-VM6X8T17WN"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-    <!-- Open Graph -->
-    <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://monozain.com/" />
-    <meta property="og:title" content="Monozain — Beauty in Simplicity" />
-    <meta
-      property="og:description"
-      content="Curated beauty across fashion, technology, living, and everyday life."
-    />
-    <meta
-      property="og:image"
-      content="https://monozain.com/Images/mz-og-banner.png"
-    />
-    <meta property="og:site_name" content="Monozain" />
+  gtag('config', 'G-VM6X8T17WN');
+</script>
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Monozain - Beauty in Simplicity" />
-    <meta
-      name="twitter:description"
-      content="Curated beauty across fashion, technology, living, and everyday life."
-    />
-    <meta
-      name="twitter:image"
-      content="https://monozain.com/Images/mz-og-banner.png"
-    />
+<!-- ============================================================
+     SEO / SOCIAL META TAGS
+     - Domain set to https://monozain.com — update if this ever changes.
+     - Image files expected at: images/mz-favicon.png (icon/logo)
+       and images/mz-og-banner.png (1200x630 social preview banner).
+       Add these files to the "images" folder next to this HTML file.
+============================================================= -->
 
-    <!-- Schema.org -->
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "Organization",
-        "name": "Monozain",
-        "url": "https://monozain.com",
-        "image": "https://monozain.com/images/mz-favicon.png",
-        "description": "A curated lifestyle brand exploring beauty in simplicity.",
-        "slogan": "Beauty in simplicity."
-      }
-    </script>
+<title>Monozain — Beauty in Simplicity</title>
+<meta name="description" content="Monozain — Beauty in Simplicity. Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
+<meta name="keywords" content="Monozain, online shop Bangladesh, ecommerce, fashion, electronics, home living, beauty, cash on delivery, buy online Bangladesh">
+<meta name="author" content="Monozain">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://monozain.com/">
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
-      rel="stylesheet"
-    />
+<!-- Favicon / touch icon (uses images/mz-favicon.png for all sizes) -->
+<link rel="icon" type="image/png" href="images/mz-favicon.png">
+<link rel="shortcut icon" type="image/png" href="images/mz-favicon.png">
+<link rel="apple-touch-icon" href="images/mz-favicon.png">
 
-    <link rel="icon" href="Images/mz-favicon.png" sizes="any" />
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Monozain">
+<meta property="og:title" content="Monozain — Beauty in Simplicity">
+<meta property="og:description" content="Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
+<meta property="og:url" content="https://monozain.com/">
+<meta property="og:image" content="https://monozain.com/images/mz-og-banner.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_US">
+<!-- Monozain's Facebook Page -->
+<meta property="article:publisher" content="https://facebook.com/monozainfb">
 
-    <link rel="shortcut icon" type="image/png" href="Images/mz-favicon.png" />
+<!-- Twitter / X Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@MonozainX">
+<meta name="twitter:title" content="Monozain — Beauty in Simplicity">
+<meta name="twitter:description" content="Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
+<meta name="twitter:image" content="https://monozain.com/images/mz-og-banner.png">
 
-    <link rel="apple-touch-icon" href="Images/mz-favicon.png" />
-    <!-- Lucide Icons -->
-    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js"></script>
+<!-- Theme color for mobile browser UI -->
+<meta name="theme-color" content="#1d9bf0">
 
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <!-- ── NAVBAR ───────────────────────────────────────── -->
-    <nav role="navigation" aria-label="Main navigation">
-      <a class="nav-logo" href="/" aria-label="Monozain home">
-        <span class="nav-logo-name">Monozain</span>
-        <span class="nav-logo-tag">Beauty in simplicity</span>
-      </a>
+<!-- ============================================================
+     STRUCTURED DATA (JSON-LD) — helps Google show Monozain with
+     a logo, sitelinks, and social profiles in search results.
+============================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Monozain",
+  "alternateName": "Monozain — Beauty in Simplicity",
+  "url": "https://monozain.com/",
+  "logo": "https://monozain.com/images/mz-favicon.png",
+  "sameAs": [
+    "https://facebook.com/monozainfb",
+    "https://x.com/MonozainX"
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "name": "Monozain",
+  "url": "https://monozain.com/",
+  "description": "Monozain — Beauty in Simplicity. Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh."
+}
+</script>
 
-      <ul class="nav-links" role="list">
-        <li><a href="#home">Home</a></li>
-        <li><a href="#fashion">Fashion</a></li>
-        <li><a href="#tech">Tech</a></li>
-        <li><a href="#living">Living</a></li>
-        <li><a href="#journal">Journal</a></li>
-      </ul>
+<style>
+  * { box-sizing: border-box; margin:0; padding:0; -webkit-tap-highlight-color: transparent; }
+  button, a, input, textarea, select, [onclick], [tabindex] { outline:none; font-family:inherit; }
+  button:focus-visible, a:focus-visible, .card:focus-visible, .icon-circle:focus-visible,
+  .theme-toggle:focus-visible, .cta-btn:focus-visible, .cat-pill:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent);
+    border-radius: 9999px;
+  }
+  input:focus-visible, textarea:focus-visible, select:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  :root {
+    --bg:#fff; --bg-elevated:#fff; --border:#eff3f4; --text:#0f1419;
+    --sub:#536471; --hover:#f7f7f7; --accent:#1d9bf0; --panel:#f7f8f8;
+  }
+  body.dark {
+    --bg:#000; --bg-elevated:#000; --border:#2f3336; --text:#e7e9ea;
+    --sub:#71767b; --hover:#181818; --accent:#1d9bf0; --panel:#16181c;
+  }
+  html { scroll-behavior:smooth; }
+  body {
+    font-family: "Segoe UI", Arial, Helvetica, sans-serif;
+    background:var(--bg);
+    color:var(--text);
+  }
+  a { color:inherit; text-decoration:none; }
+  img { max-width:100%; display:block; }
 
-      <div class="nav-right">
-        <button class="theme-pill" id="themeToggle" aria-label="Toggle theme">
-          <i
-            data-lucide="sun"
-            id="iconSun"
-            style="width: 14px; height: 14px"
-          ></i>
-          <i
-            data-lucide="moon"
-            id="iconMoon"
-            style="width: 14px; height: 14px; display: none"
-          ></i>
-          <span id="themeLabel">Light</span>
-        </button>
-        <button
-          class="mobile-menu-btn"
-          id="mobileMenuBtn"
-          aria-label="Open menu"
-          aria-expanded="false"
-        >
-          <i
-            data-lucide="ellipsis-vertical"
-            style="width: 16px; height: 16px"
-          ></i>
-        </button>
-      </div>
-    </nav>
+  /* ---------- Top bar (floating, transparent) ---------- */
+  .topbar {
+    position:fixed; top:0; left:0; right:0; z-index:80;
+    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+    padding:16px 20px;
+    background:transparent; border-bottom:none; pointer-events:none;
+  }
+  .topbar > * { pointer-events:auto; }
+  .brand-pill {
+    display:flex; align-items:center; gap:8px; flex-shrink:0; justify-self:start;
+    padding:9px 18px; border-radius:9999px;
+    background:var(--panel); border:1px solid var(--border);
+    font-size:16px; font-weight:800; letter-spacing:.01em;
+    cursor:pointer; box-shadow:0 2px 10px rgba(0,0,0,0.12);
+    transition: box-shadow .2s ease;
+  }
+  .brand-pill:hover {
+    box-shadow: 0 4px 18px rgba(29,155,240,0.35);
+  }
+  .brand-pill .brand-text {
+    display:inline-block;
+    background:linear-gradient(90deg, var(--text) 0%, var(--accent) 50%, var(--text) 100%);
+    background-size:200% auto;
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+    animation: brandShine 3.4s linear infinite;
+  }
+  @keyframes brandShine {
+    0% { background-position:200% center; }
+    100% { background-position:-200% center; }
+  }
 
-    <!-- Mobile floating dropdown -->
-    <div
-      class="mobile-menu"
-      id="mobileMenu"
-      role="menu"
-      aria-label="Navigation menu"
-    >
-      <a href="#home" role="menuitem"><i data-lucide="house"></i>Home</a>
-      <a href="#fashion" role="menuitem"><i data-lucide="shirt"></i>Fashion</a>
-      <a href="#tech" role="menuitem"><i data-lucide="cpu"></i>Tech</a>
-      <a href="#living" role="menuitem"><i data-lucide="sofa"></i>Living</a>
-      <a href="#journal" role="menuitem"
-        ><i data-lucide="pen-line"></i>Journal</a
-      >
-      <div class="mobile-menu-divider"></div>
-      <a href="#notify" role="menuitem"
-        ><i data-lucide="bell"></i>Get notified</a
-      >
+  .search-wrap { justify-self:center; width:min(92vw, 460px); position:relative; }
+  .search-wrap input {
+    width:100%; padding:11px 16px 11px 42px; border-radius:9999px;
+    border:1px solid var(--border); background:var(--panel); color:var(--text);
+    font-size:14px; box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  }
+  .search-wrap input::placeholder { color:var(--sub); }
+  .search-wrap .ui-icon { position:absolute; left:15px; top:50%; transform:translateY(-50%); }
+
+  .search-results {
+    display:none; position:absolute; top:calc(100% + 8px); left:0; right:0;
+    background:var(--bg); border:1px solid var(--border); border-radius:16px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.18); max-height:400px; overflow-y:auto; z-index:90;
+  }
+  .search-results.open { display:block; }
+  .sr-item {
+    display:flex; align-items:center; gap:12px; padding:10px 12px; cursor:pointer; border-radius:12px;
+  }
+  .sr-item:hover { background:var(--hover); }
+  .sr-item .thumb { width:42px; height:42px; border-radius:10px; overflow:hidden; flex-shrink:0; background:var(--panel); }
+  .sr-item .thumb img { width:100%; height:100%; object-fit:cover; }
+  .sr-item .info { flex:1; min-width:0; }
+  .sr-item .name { font-size:13px; font-weight:700; line-height:1.3; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
+  .sr-item .cat { font-size:11px; color:var(--sub); }
+  .sr-item .price { font-size:13px; font-weight:800; flex-shrink:0; }
+  .sr-empty { padding:16px 12px; font-size:13px; color:var(--sub); text-align:center; }
+
+  .topbar-right { display:flex; align-items:center; gap:10px; justify-self:end; }
+  .icon-circle {
+    width:40px; height:40px; border:1px solid var(--border); border-radius:50%;
+    display:flex; align-items:center; justify-content:center; cursor:pointer;
+    flex-shrink:0; background:var(--panel); position:relative;
+    box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  }
+  .icon-circle:hover { background:var(--hover); }
+  .cart-badge {
+    position:absolute; top:-4px; right:-4px; min-width:18px; height:18px; padding:0 4px;
+    border-radius:9999px; background:var(--accent); color:#fff; font-size:11px; font-weight:800;
+    display:flex; align-items:center; justify-content:center;
+  }
+  @media (max-width:560px) {
+    .topbar { grid-template-columns:auto 1fr auto; padding:10px 8px; gap:6px; }
+    .brand-pill { padding:9px 12px; font-size:14px; }
+    .search-wrap { width:100%; min-width:0; }
+    .search-wrap input { padding:10px 12px 10px 36px; font-size:13px; }
+    .search-wrap .ui-icon { left:12px; width:15px; height:15px; }
+    .topbar-right { gap:6px; }
+    .icon-circle { width:36px; height:36px; }
+  }
+
+  /* ---------- Floating WhatsApp button ---------- */
+  .whatsapp-fab {
+    position:fixed; bottom:20px; right:20px; z-index:90;
+    width:56px; height:56px; border-radius:50%;
+    display:flex; align-items:center; justify-content:center;
+    background:#25D366; box-shadow:0 4px 16px rgba(37,211,102,0.45);
+    cursor:pointer; transition:transform .15s ease;
+  }
+  .whatsapp-fab:hover { transform:scale(1.06); }
+  .whatsapp-fab img { width:30px; height:30px; }
+
+  /* ---------- Banner carousel ---------- */
+  .banner {
+    position:relative; width:100%; height:340px; overflow:hidden;
+  }
+  .banner-slide {
+    position:absolute; inset:0; opacity:0; transition:opacity .6s ease;
+    display:flex; align-items:center; justify-content:center; text-align:center;
+    padding:100px 20px 20px 20px; color:#fff;
+  }
+  .banner-slide.active { opacity:1; }
+  .banner-slide .bs-inner { max-width:640px; }
+  .banner-slide .bs-eyebrow { font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; opacity:.9; margin-bottom:10px; }
+  .banner-slide h2 { font-size:clamp(24px,4.4vw,38px); font-weight:800; line-height:1.2; margin-bottom:10px; }
+  .banner-slide p { font-size:clamp(13px,2vw,16px); opacity:.95; }
+  .banner-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5; }
+  .banner-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer; transition:background .2s ease, width .2s ease; }
+  .banner-dot.active { background:#fff; width:22px; border-radius:9999px; }
+
+  /* ---------- Hero ---------- */
+  .hero {
+    padding:44px 20px 30px 20px; text-align:center;
+    max-width:760px; margin:0 auto;
+  }
+  .demo-badge {
+    display:inline-block; font-size:12px; font-weight:800; letter-spacing:.03em;
+    color:#f4212e; background:rgba(244,33,46,0.1); border:1px solid rgba(244,33,46,0.3);
+    padding:6px 14px; border-radius:9999px; margin-bottom:14px;
+  }
+  .eyebrow {
+    display:inline-block; font-size:12px; font-weight:800; letter-spacing:.08em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:10px;
+  }
+  .hero .tagline { font-size:clamp(15px,2.2vw,18px); font-weight:700; color:var(--accent); margin-bottom:10px; }
+  .hero h1 { font-size:clamp(28px, 5vw, 44px); font-weight:800; line-height:1.2; margin-bottom:14px; letter-spacing:-.01em; }
+  .hero p { font-size:clamp(15px, 2vw, 17px); color:var(--sub); line-height:1.6; max-width:560px; margin:0 auto; }
+  .section-underline { width:44px; height:4px; border-radius:9999px; background:var(--accent); margin:16px auto 0 auto; }
+
+  /* ---------- Category filter ---------- */
+  .filter-bar {
+    display:flex; align-items:center; gap:10px; padding:14px 20px; flex-wrap:wrap;
+    max-width:1400px; margin:0 auto;
+    position:relative; background:transparent;
+  }
+  .filter-btn {
+    display:flex; align-items:center; gap:8px; padding:10px 18px; border-radius:9999px;
+    background:var(--panel); border:1px solid var(--border); cursor:pointer;
+    font-size:14px; font-weight:700; box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  }
+  .filter-btn:hover { background:var(--hover); }
+  .filter-btn.active-filter { background:var(--accent); color:#fff; border-color:var(--accent); }
+  .filter-chip {
+    display:flex; align-items:center; gap:6px; padding:9px 14px 9px 16px; border-radius:9999px;
+    background:var(--accent); color:#fff; font-size:13px; font-weight:700; box-shadow:0 2px 10px rgba(0,0,0,0.12);
+  }
+  .filter-chip .fc-x { cursor:pointer; opacity:.85; }
+  .filter-chip .fc-x:hover { opacity:1; }
+  .filter-panel {
+    display:none; position:absolute; top:56px; left:20px; z-index:40;
+    background:var(--bg); border:1px solid var(--border); border-radius:16px;
+    box-shadow:0 8px 30px rgba(0,0,0,0.18); padding:10px; width:min(92vw,320px);
+    max-height:360px; overflow-y:auto;
+  }
+  .filter-panel.open { display:block; }
+  .filter-option {
+    padding:10px 12px; border-radius:10px; font-size:14px; font-weight:600; cursor:pointer;
+  }
+  .filter-option:hover { background:var(--hover); }
+  .filter-option.selected { color:var(--accent); font-weight:800; }
+
+
+  .result-info { padding:14px 20px 0 20px; font-size:14px; color:var(--sub); max-width:1400px; margin:0 auto; }
+
+  /* ---------- Product grid ---------- */
+  .shop-wrap { max-width:1400px; margin:0 auto; padding:14px 20px 80px 20px; }
+  .product-grid {
+    display:grid; grid-template-columns:repeat(2,1fr); gap:16px; margin-top:10px;
+  }
+  @media (min-width:640px) { .product-grid { grid-template-columns:repeat(3,1fr); } }
+  @media (min-width:900px) { .product-grid { grid-template-columns:repeat(4,1fr); } }
+  @media (min-width:1220px) { .product-grid { grid-template-columns:repeat(5,1fr); } }
+
+  .card {
+    background:var(--panel); border:1px solid var(--border); border-radius:18px;
+    overflow:hidden; cursor:pointer; display:flex; flex-direction:column;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .card:hover { box-shadow:0 6px 20px rgba(0,0,0,0.12); transform:translateY(-2px); }
+  .card .thumb { width:100%; aspect-ratio:1/1; background:var(--hover); overflow:hidden; }
+  .card .thumb img { width:100%; height:100%; object-fit:cover; }
+  .card .body { padding:12px 14px 14px 14px; display:flex; flex-direction:column; gap:6px; flex:1; }
+  .card .cat-tag { font-size:11px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); }
+  .card .pname { font-size:14px; font-weight:700; line-height:1.35; min-height:38px; }
+  .card .price-row { display:flex; align-items:center; justify-content:space-between; margin-top:auto; padding-top:6px; }
+  .card .price { font-size:16px; font-weight:800; }
+  .card .old-price { font-size:12px; color:var(--sub); text-decoration:line-through; margin-left:6px; font-weight:500; }
+  .add-btn {
+    width:100%; margin-top:10px; padding:10px; border-radius:9999px; border:none;
+    background:var(--accent); color:#fff; font-size:13px; font-weight:700; cursor:pointer;
+    display:flex; align-items:center; justify-content:center; gap:6px;
+  }
+  .add-btn:hover { background:#1a8cd8; }
+  .add-btn.added { background:#17bf63; }
+
+  .empty-state { text-align:center; padding:60px 20px; color:var(--sub); }
+
+  /* ---------- Cart drawer ---------- */
+  .overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:100; }
+  .overlay.open { display:block; }
+  .drawer {
+    position:fixed; top:0; right:0; height:100vh; height:100dvh; width:100%; max-width:420px;
+    background:var(--bg); transform:translateX(100%); transition:transform .25s ease; z-index:101;
+    display:flex; flex-direction:column; box-shadow:-4px 0 24px rgba(0,0,0,0.2);
+  }
+  .drawer.open { transform:translateX(0); }
+  .drawer-header {
+    display:flex; align-items:center; justify-content:space-between; padding:16px 18px;
+    border-bottom:1px solid var(--border);
+  }
+  .drawer-header h3 { font-size:18px; font-weight:800; }
+  .drawer-body { flex:1; overflow-y:auto; padding:10px 18px; }
+  .cart-item { display:flex; gap:12px; padding:12px 0; border-bottom:1px solid var(--border); }
+  .cart-item .thumb { width:64px; height:64px; border-radius:12px; overflow:hidden; flex-shrink:0; background:var(--panel); }
+  .cart-item .thumb img { width:100%; height:100%; object-fit:cover; }
+  .cart-item .info { flex:1; min-width:0; }
+  .cart-item .name { font-size:14px; font-weight:700; line-height:1.3; }
+  .cart-item .cat { font-size:12px; color:var(--sub); margin-top:2px; }
+  .cart-item .qty-row { display:flex; align-items:center; gap:10px; margin-top:8px; }
+  .qty-btn {
+    width:26px; height:26px; border-radius:50%; border:1px solid var(--border); background:var(--panel);
+    cursor:pointer; font-size:15px; font-weight:700; display:flex; align-items:center; justify-content:center; color:var(--text);
+  }
+  .qty-btn:hover { background:var(--hover); }
+  .cart-item .price { font-size:14px; font-weight:800; white-space:nowrap; }
+  .remove-link { font-size:12px; color:var(--sub); cursor:pointer; margin-left:auto; }
+  .remove-link:hover { color:var(--text); text-decoration:underline; }
+
+  .drawer-footer { padding:16px 18px; border-top:1px solid var(--border); }
+  .total-row { display:flex; justify-content:space-between; font-size:15px; margin-bottom:4px; color:var(--sub); }
+  .total-row.grand { font-size:18px; font-weight:800; color:var(--text); margin-top:6px; margin-bottom:14px; }
+  .cta-btn {
+    width:100%; border-radius:9999px; padding:14px 26px; font-size:15px; font-weight:700; cursor:pointer;
+    border:none;
+  }
+  .cta-btn.primary { background:var(--accent); color:#fff; box-shadow:0 6px 18px rgba(29,155,240,0.35); }
+  .cta-btn.primary:hover { background:#1a8cd8; }
+  .cta-btn.secondary { background:transparent; color:var(--text); border:1.5px solid var(--border); }
+  .cta-btn.secondary:hover { background:var(--hover); }
+  .cta-btn:disabled { opacity:.5; cursor:not-allowed; }
+
+  /* ---------- Checkout modal ---------- */
+  .modal-overlay { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:110; align-items:center; justify-content:center; padding:16px; }
+  .modal-overlay.open { display:flex; }
+  .modal {
+    background:var(--bg); border:1px solid var(--border); border-radius:20px;
+    width:100%; max-width:520px; max-height:92vh; overflow-y:auto;
+  }
+  .modal-header { display:flex; align-items:center; justify-content:space-between; padding:18px 20px; border-bottom:1px solid var(--border); position:sticky; top:0; background:var(--bg); }
+  .modal-header h3 { font-size:18px; font-weight:800; }
+  .checkout-header-actions { display:flex; align-items:center; gap:10px; }
+  .save-indicator {
+    font-size:12px; color:var(--sub); font-weight:600;
+    opacity:0; transition:opacity .25s ease;
+  }
+  .save-indicator.show { opacity:1; }
+  .save-indicator.saved { color:#17bf63; }
+  .clear-btn {
+    font-size:12px; font-weight:700; padding:6px 13px; border-radius:9999px;
+    border:1px solid var(--border); background:var(--panel); color:var(--text); cursor:pointer;
+  }
+  .clear-btn:hover { background:var(--hover); }
+  .confirm-note { font-size:12.5px; color:var(--sub); text-align:center; margin-bottom:12px; }
+  .modal-body { padding:18px 20px; }
+  .field { margin-bottom:14px; }
+  .field label { display:block; font-size:13px; font-weight:700; margin-bottom:6px; color:var(--text); }
+  .field .req { color:#f4212e; }
+  .field input, .field select, .field textarea {
+    width:100%; padding:12px 14px; border-radius:12px; border:1px solid var(--border);
+    background:var(--panel); color:var(--text); font-size:14px;
+  }
+  .field textarea { resize:vertical; min-height:70px; }
+  .field-row { display:flex; gap:12px; }
+  .field-row .field { flex:1; }
+  .order-summary { background:var(--panel); border:1px solid var(--border); border-radius:14px; padding:14px; margin-bottom:16px; }
+  .order-summary .os-item { display:flex; justify-content:space-between; font-size:13px; color:var(--sub); padding:3px 0; }
+  .order-summary .os-total { display:flex; justify-content:space-between; font-size:15px; font-weight:800; color:var(--text); margin-top:8px; padding-top:8px; border-top:1px solid var(--border); }
+  .form-msg { font-size:13px; color:var(--sub); margin-top:10px; text-align:center; }
+  .form-msg.success { color:#17bf63; font-weight:700; }
+  .form-msg.error { color:#f4212e; font-weight:700; }
+
+  /* ---------- Product detail modal ---------- */
+  .pd-body { padding:0; }
+  .pd-image { width:100%; aspect-ratio:1/1; background:var(--panel); overflow:hidden; }
+  .pd-image img { width:100%; height:100%; object-fit:cover; }
+  .pd-content { padding:18px 20px 20px 20px; }
+  .pd-cat { font-size:12px; font-weight:800; text-transform:uppercase; letter-spacing:.05em; color:var(--accent); }
+  .pd-name { font-size:22px; font-weight:800; margin:8px 0 10px 0; line-height:1.3; }
+  .pd-price-row { display:flex; align-items:center; gap:10px; margin-bottom:14px; }
+  .pd-price { font-size:24px; font-weight:800; }
+  .pd-old { font-size:15px; color:var(--sub); text-decoration:line-through; }
+  .pd-desc { font-size:14px; line-height:1.6; color:var(--sub); margin-bottom:18px; }
+  .pd-qty-row { display:flex; align-items:center; gap:14px; margin-bottom:18px; }
+  .pd-qty-row .qty-btn { width:34px; height:34px; font-size:17px; }
+  .pd-qty-row .qty-val { font-size:16px; font-weight:700; min-width:20px; text-align:center; }
+
+  /* ---------- Footer ---------- */
+  .site-footer { border-top:1px solid var(--border); padding:44px 20px 24px 20px; max-width:1400px; margin:0 auto; }
+  .footer-top { display:grid; grid-template-columns:1.6fr 1fr 1fr 1fr; gap:32px; }
+  @media (max-width:800px) { .footer-top { grid-template-columns:1fr 1fr; } }
+  @media (max-width:520px) { .footer-top { grid-template-columns:1fr; } }
+  .footer-brand { font-size:20px; font-weight:800; }
+  .footer-tagline { color:var(--sub); font-size:14px; margin-top:10px; max-width:320px; line-height:1.6; }
+  .footer-meaning { color:var(--sub); font-size:13px; margin-top:14px; max-width:340px; line-height:1.6; padding-top:14px; border-top:1px solid var(--border); }
+  .footer-meaning strong { color:var(--text); }
+  .footer-col .footer-label { font-size:13px; font-weight:800; text-transform:uppercase; letter-spacing:.04em; color:var(--sub); margin-bottom:12px; }
+  .footer-col a, .footer-col .fline { display:block; font-size:14px; color:var(--text); padding:6px 0; }
+  .footer-col a.social-line { display:flex; align-items:center; gap:10px; }
+  .footer-col a.social-line img { border-radius:4px; flex-shrink:0; }
+  .footer-col a:hover { color:var(--accent); }
+  .footer-bottom {
+    margin-top:36px; padding-top:18px; border-top:1px solid var(--border);
+    font-size:13px; color:var(--sub); display:flex; flex-direction:column; align-items:center;
+    gap:6px; text-align:center;
+  }
+  .footer-bottom a { color:var(--accent); font-weight:700; }
+  .footer-bottom a:hover { text-decoration:underline; }
+
+  .theme-toggle .ui-icon { display:block; }
+  .toast {
+    position:fixed; bottom:20px; left:50%; transform:translateX(-50%) translateY(20px);
+    background:var(--text); color:var(--bg); padding:12px 20px; border-radius:9999px;
+    font-size:14px; font-weight:700; z-index:200; opacity:0; pointer-events:none;
+    transition:opacity .2s ease, transform .2s ease;
+  }
+  .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="brand-pill" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="brand-text">Monozain</span></div>
+  <div class="search-wrap">
+    <img class="ui-icon" data-icon="lucide:search" src="https://api.iconify.design/lucide:search.svg" width="17" height="17" alt="">
+    <input id="searchInput" type="text" placeholder="Search products…" oninput="handleSearchInput()" onfocus="handleSearchInput()">
+    <div class="search-results" id="searchResults"></div>
+  </div>
+  <div class="topbar-right">
+    <div class="icon-circle theme-toggle" onclick="toggleTheme()">
+      <img id="themeIcon" class="ui-icon" data-icon="lucide:moon" src="https://api.iconify.design/lucide:moon.svg" width="18" height="18" alt="Toggle theme">
+    </div>
+    <div class="icon-circle" onclick="openCart()">
+      <img class="ui-icon" data-icon="lucide:shopping-cart" src="https://api.iconify.design/lucide:shopping-cart.svg" width="18" height="18" alt="Cart">
+      <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
+    </div>
+  </div>
+</div>
+
+<div class="banner" id="banner"></div>
+
+<div class="hero">
+  <div class="demo-badge">(DEMO — Being Developed)</div>
+  <h1>Everyday essentials, picked with care.</h1>
+  <p>Quality electronics, fashion, home & lifestyle products — delivered across Bangladesh. No account needed to shop.</p>
+  <div class="section-underline"></div>
+</div>
+
+<div class="filter-bar" id="filterBar">
+  <div class="filter-btn" id="filterBtn" onclick="toggleFilterPanel()">
+    <img class="ui-icon" data-icon="lucide:sliders-horizontal" src="https://api.iconify.design/lucide:sliders-horizontal.svg" width="15" height="15" alt="">
+    <span>Filter</span>
+  </div>
+  <div id="activeFilterChip"></div>
+  <div class="filter-panel" id="filterPanel"></div>
+</div>
+<div class="result-info" id="resultInfo"></div>
+
+<div class="shop-wrap">
+  <div class="product-grid" id="productGrid"></div>
+</div>
+
+<footer class="site-footer">
+  <div class="footer-top">
+    <div>
+      <div class="footer-brand">Monozain</div>
+      <div class="footer-tagline">Curated everyday products at fair prices, delivered to your doorstep across Bangladesh.</div>
+      <div class="footer-meaning">The name <strong>Monozain</strong> blends <em>"Mono"</em> — one, singular — with <em>"Zain"</em>, a word rooted in grace and beauty. Together, it means one place, beautifully simple: our promise of <strong>Beauty in Simplicity</strong>.</div>
     </div>
 
-    <!-- ── HERO ─────────────────────────────────────────── -->
-    <section class="hero" id="home" aria-label="Hero">
-      <div class="hero-orb" aria-hidden="true"></div>
+    <div class="footer-col">
+      <div class="footer-label">Shop</div>
+      <a href="#" onclick="return false;">All Categories</a>
+      <a href="#" onclick="return false;">Best Sellers</a>
+      <a href="#" onclick="return false;">New Arrivals</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Support</div>
+      <span class="fline">Cash on Delivery available</span>
+      <span class="fline">Delivery across all districts</span>
+      <span class="fline">Easy 3-day exchange</span>
+    </div>
+    <div class="footer-col">
+      <div class="footer-label">Follow Us</div>
+      <a href="https://facebook.com/monozainfb" target="_blank" rel="noopener" class="social-line">
+        <img src="https://cdn.simpleicons.org/facebook/1877F2" width="18" height="18" alt="Facebook"> Facebook
+      </a>
+      <a href="https://x.com/MonozainX" target="_blank" rel="noopener" class="social-line">
+        <img id="xIcon" src="https://cdn.simpleicons.org/x/0F1419" width="18" height="18" alt="X (Twitter)"> X (Twitter)
+      </a>
+      <a href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" class="social-line">
+        <img src="https://cdn.simpleicons.org/whatsapp/25D366" width="18" height="18" alt="WhatsApp"> WhatsApp
+      </a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© <span id="footerYear"></span> Monozain. All rights reserved.</span>
+    <span>Made with care by <a href="https://shifat.dev" target="_blank" rel="noopener">Sarowar Shifat</a></span>
+  </div>
+</footer>
 
-      <div class="hero-eyebrow" aria-hidden="true">A new kind of beauty</div>
+<!-- Cart drawer -->
+<div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="drawer" id="cartDrawer">
+  <div class="drawer-header">
+    <h3>Your Cart</h3>
+    <div class="icon-circle" onclick="closeCart()">
+      <img class="ui-icon" data-icon="lucide:x" src="https://api.iconify.design/lucide:x.svg" width="16" height="16" alt="Close">
+    </div>
+  </div>
+  <div class="drawer-body" id="cartBody"></div>
+  <div class="drawer-footer" id="cartFooter"></div>
+</div>
 
-      <h1 class="hero-wordmark" id="wordmark" aria-label="Monozain"></h1>
-
-      <p class="hero-tagline">Beauty in simplicity</p>
-
-      <div class="hero-meaning" role="region" aria-label="Brand name meaning">
-        <div class="meaning-part">
-          <p class="meaning-lang">Japanese &middot; 物 (Mono)</p>
-          <p class="meaning-word">Mono</p>
-          <p class="meaning-def">
-            Things, objects, matter — the essence of what exists in the physical
-            world.
-          </p>
-        </div>
-        <div class="meaning-part">
-          <p class="meaning-lang">Arabic &middot; زين (Zain)</p>
-          <p class="meaning-word">Zain</p>
-          <p class="meaning-def">
-            Beauty, grace, adornment — the quality that makes something worth
-            noticing.
-          </p>
-        </div>
-        <div class="meaning-part">
-          <p class="meaning-lang">Together</p>
-          <p class="meaning-word">Monozain</p>
-          <p class="meaning-def">
-            The beauty of things. A name born from two languages, one
-            philosophy.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── COMING SOON ───────────────────────────────────── -->
-    <section class="coming-soon-section" id="notify" aria-label="Coming soon">
-      <div class="cs-pill">Launching soon</div>
-      <h2>Something considered<br />is on its way.</h2>
-      <p>
-        We're building slowly, carefully. Be the first to know when Monozain
-        opens its doors.
-      </p>
-      <div
-        class="notify-form"
-        role="form"
-        aria-label="Email notification signup"
-      >
-        <input
-          type="email"
-          id="notifyEmail"
-          placeholder="your@email.com"
-          aria-label="Email address"
-        />
-        <button type="button" id="notifyBtn">Notify me</button>
-      </div>
-    </section>
-
-    <!-- ── CATEGORIES ────────────────────────────────────── -->
-    <section class="categories-section" id="categories" aria-label="Categories">
-      <div class="section-wrap">
-        <div class="section-header reveal">
-          <div>
-            <p class="section-label">What we cover</p>
-            <h2 class="section-title">Four worlds, one lens.</h2>
-          </div>
-          <span class="section-badge">All coming soon</span>
-        </div>
-
-        <div class="categories-grid reveal">
-          <div class="cat-card" id="fashion" aria-label="Fashion category">
-            <span class="cat-number" aria-hidden="true">01</span>
-            <div class="cat-icon"><i data-lucide="shirt"></i></div>
-            <p class="cat-name">Fashion</p>
-            <p class="cat-desc">
-              Clothes that last. Pieces chosen not for trends but for the quiet
-              confidence of things made well — fabric, cut, and intent.
-            </p>
-            <span class="cat-pill">Coming soon</span>
-          </div>
-
-          <div class="cat-card" id="tech" aria-label="Tech category">
-            <span class="cat-number" aria-hidden="true">02</span>
-            <div class="cat-icon"><i data-lucide="cpu"></i></div>
-            <p class="cat-name">Tech</p>
-            <p class="cat-desc">
-              Tools that respect your time. Technology that solves real problems
-              without demanding your undivided attention in return.
-            </p>
-            <span class="cat-pill">Coming soon</span>
-          </div>
-
-          <div class="cat-card" id="living" aria-label="Living category">
-            <span class="cat-number" aria-hidden="true">03</span>
-            <div class="cat-icon"><i data-lucide="sofa"></i></div>
-            <p class="cat-name">Living</p>
-            <p class="cat-desc">
-              Premium furniture, considered objects, rare materials. Spaces and
-              pieces that earn their place through craft and restraint.
-            </p>
-            <span class="cat-pill">Coming soon</span>
-          </div>
-
-          <div class="cat-card" id="journal" aria-label="Journal category">
-            <span class="cat-number" aria-hidden="true">04</span>
-            <div class="cat-icon"><i data-lucide="pen-line"></i></div>
-            <p class="cat-name">Journal</p>
-            <p class="cat-desc">
-              Words worth sitting with. Essays, observations, and small
-              discoveries about beauty found in everyday life.
-            </p>
-            <span class="cat-pill">Coming soon</span>
-          </div>
+<!-- Checkout modal -->
+<div class="modal-overlay" id="checkoutOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Checkout</h3>
+      <div class="checkout-header-actions">
+        <span class="save-indicator" id="saveIndicator"></span>
+        <button type="button" class="clear-btn" onclick="clearCheckoutForm()">Clear</button>
+        <div class="icon-circle" onclick="closeCheckout()">
+          <img class="ui-icon" data-icon="lucide:x" src="https://api.iconify.design/lucide:x.svg" width="16" height="16" alt="Close">
         </div>
       </div>
-    </section>
+    </div>
+    <div class="modal-body">
+      <div class="order-summary" id="orderSummary"></div>
+      <form id="checkoutForm" onsubmit="return submitOrder(event)" oninput="handleDraftInput()">
+        <div class="field">
+          <label>Full Name <span class="req">*</span></label>
+          <input type="text" id="custName" required placeholder="e.g. Md. Rahim Islam">
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>Phone Number <span class="req">*</span></label>
+            <input type="tel" id="custPhone" required placeholder="01XXXXXXXXX">
+          </div>
+          <div class="field">
+            <label>Email <span class="req">*</span></label>
+            <input type="email" id="custEmail" required placeholder="you@example.com">
+          </div>
+        </div>
+        <div class="field">
+          <label>Full Address <span class="req">*</span></label>
+          <textarea id="custAddress" required placeholder="House no, road, area"></textarea>
+        </div>
+        <div class="field-row">
+          <div class="field">
+            <label>District <span class="req">*</span></label>
+            <select id="custDistrict" required>
+              <option value="" disabled selected>Select district</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Thana / Upazila <span class="req">*</span></label>
+            <input type="text" id="custThana" required placeholder="e.g. Sadar">
+          </div>
+        </div>
+        <div class="field">
+          <label>Order Notes (optional)</label>
+          <textarea id="custNotes" placeholder="Delivery instructions, gift note, etc."></textarea>
+        </div>
+        <div class="confirm-note">We will call to confirm the order before sending.</div>
+        <button type="submit" class="cta-btn primary" id="confirmBtn">Confirm Order</button>
+        <div class="form-msg" id="checkoutMsg"></div>
+      </form>
+    </div>
+  </div>
+</div>
 
-    <!-- ── PHILOSOPHY ────────────────────────────────────── -->
-    <section class="philosophy-section" aria-label="Our philosophy">
-      <div class="philosophy-inner">
-        <div class="philosophy-left reveal">
-          <p class="ph-label">Our philosophy</p>
-          <h2>We believe beauty is never accidental.</h2>
-          <p>
-            Monozain exists to surface the things that earn their place —
-            objects, ideas, and spaces where every decision was made on purpose.
-          </p>
-          <p>
-            Not minimal for minimalism's sake. Simple because that's what's left
-            when everything unnecessary has been removed.
-          </p>
-          <div class="ph-pills">
-            <span class="ph-pill">Considered</span>
-            <span class="ph-pill">Slow living</span>
-            <span class="ph-pill">Craft</span>
-            <span class="ph-pill">Form &amp; function</span>
-            <span class="ph-pill">Restraint</span>
-          </div>
-        </div>
-        <div class="philosophy-right reveal">
-          <div class="ph-item">
-            <span class="ph-item-num">I</span>
-            <div class="ph-item-text">
-              <strong>Considered over curated</strong>
-              <span
-                >We don't collect things because they look good together. We
-                collect them because each one stands alone.</span
-              >
-            </div>
-          </div>
-          <div class="ph-item">
-            <span class="ph-item-num">II</span>
-            <div class="ph-item-text">
-              <strong>Slow over fast</strong>
-              <span
-                >We take time to understand before we publish. That's not a
-                limitation — it's the whole point.</span
-              >
-            </div>
-          </div>
-          <div class="ph-item">
-            <span class="ph-item-num">III</span>
-            <div class="ph-item-text">
-              <strong>Form follows feeling</strong>
-              <span
-                >The best design doesn't announce itself. It just makes you feel
-                something without knowing why.</span
-              >
-            </div>
-          </div>
-        </div>
+<!-- Product detail modal -->
+<div class="modal-overlay" id="productOverlay">
+  <div class="modal">
+    <div class="modal-header">
+      <h3>Product Details</h3>
+      <div class="icon-circle" onclick="closeProductModal()">
+        <img class="ui-icon" data-icon="lucide:x" src="https://api.iconify.design/lucide:x.svg" width="16" height="16" alt="Close">
       </div>
-    </section>
+    </div>
+    <div class="pd-body" id="productDetailBody"></div>
+  </div>
+</div>
 
-    <!-- ── FOOTER ────────────────────────────────────────── -->
-    <footer aria-label="Site footer">
-      <span class="footer-logo">Monozain</span>
-      <span class="footer-copy"
-        >&copy; 2026 Monozain. All rights reserved. Designed & Developed by
-        <a href="https://shifat.dev/" target="_blank" rel="noopener noreferrer"
-          >shifat.dev</a
-        ></span
-      >
-      <button class="theme-pill" id="themeToggle2" aria-label="Toggle theme">
-        <i
-          data-lucide="sun"
-          id="iconSun2"
-          style="width: 14px; height: 14px"
-        ></i>
-        <i
-          data-lucide="moon"
-          id="iconMoon2"
-          style="width: 14px; height: 14px; display: none"
-        ></i>
-        <span id="themeLabel2">Light</span>
-      </button>
-    </footer>
+<a class="whatsapp-fab" href="https://wa.me/8801XXXXXXXXX" target="_blank" rel="noopener" title="Chat with us on WhatsApp">
+  <img src="https://api.iconify.design/mdi:whatsapp.svg?color=%23ffffff" width="30" height="30" alt="WhatsApp">
+</a>
 
-    <script src="script.js"></script>
-  </body>
+<div class="toast" id="toast"></div>
+
+<script>
+/* ================= Product data ================= */
+const categories = ["All","Electronics","Men's Fashion","Women's Fashion","Bags & Wallets","Watches","Home & Living","Beauty & Care","Kids & Toys","Sports & Outdoor","Stationery & Gifts"];
+
+const banners = [
+  {bg:"1d9bf0", eyebrow:"Monozain", title:"Beauty in Simplicity", text:"Discover everyday essentials, curated with care."},
+  {bg:"7856ff", eyebrow:"Free Delivery", title:"Free delivery over ৳1000", text:"Shop more, save more — across every district."},
+  {bg:"f91880", eyebrow:"New In", title:"Fresh arrivals every week", text:"Fashion, home & beauty picks you'll love."},
+  {bg:"17bf63", eyebrow:"Cash on Delivery", title:"Pay when it arrives", text:"No account, no hassle — just simple checkout."},
+];
+
+const catalog = [
+  // Electronics
+  {n:"Wireless Earbuds Pro", c:"Electronics", p:1450, o:1800},
+  {n:"Bluetooth Party Speaker", c:"Electronics", p:2200, o:null},
+  {n:"10000mAh Power Bank", c:"Electronics", p:1150, o:1350},
+  {n:"USB-C 6-in-1 Hub", c:"Electronics", p:990, o:null},
+  {n:"15W Wireless Charger Pad", c:"Electronics", p:750, o:900},
+  // Men's Fashion
+  {n:"Classic Cotton Polo", c:"Men's Fashion", p:650, o:800},
+  {n:"Slim Fit Denim Jeans", c:"Men's Fashion", p:1200, o:null},
+  {n:"Casual Canvas Sneakers", c:"Men's Fashion", p:1850, o:2200},
+  {n:"Genuine Leather Belt", c:"Men's Fashion", p:550, o:null},
+  {n:"Graphic Print T-Shirt", c:"Men's Fashion", p:420, o:520},
+  // Women's Fashion
+  {n:"Floral Summer Maxi Dress", c:"Women's Fashion", p:1350, o:1600},
+  {n:"Oversized Denim Jacket", c:"Women's Fashion", p:1650, o:null},
+  {n:"Embroidered Kurti Set", c:"Women's Fashion", p:1100, o:1300},
+  {n:"High Waist Skinny Jeans", c:"Women's Fashion", p:1050, o:null},
+  {n:"Chiffon Printed Saree", c:"Women's Fashion", p:1900, o:2400},
+  // Bags & Wallets
+  {n:"Bifold Leather Wallet", c:"Bags & Wallets", p:590, o:700},
+  {n:"Travel Backpack 35L", c:"Bags & Wallets", p:2100, o:2500},
+  {n:"Women's Crossbody Bag", c:"Bags & Wallets", p:1150, o:null},
+  {n:"14-inch Laptop Sleeve", c:"Bags & Wallets", p:680, o:820},
+  {n:"Coin & Card Pouch", c:"Bags & Wallets", p:290, o:null},
+  // Watches
+  {n:"Minimalist Analog Watch", c:"Watches", p:1400, o:1700},
+  {n:"Smart Fitness Watch", c:"Watches", p:2800, o:3400},
+  {n:"Digital Sports Watch", c:"Watches", p:950, o:null},
+  {n:"Chronograph Steel Watch", c:"Watches", p:2450, o:2900},
+  {n:"Kids Cartoon Watch", c:"Watches", p:390, o:480},
+  // Home & Living
+  {n:"LED Adjustable Desk Lamp", c:"Home & Living", p:850, o:null},
+  {n:"Ceramic Mug Set (4pc)", c:"Home & Living", p:620, o:750},
+  {n:"Minimal Wall Clock", c:"Home & Living", p:780, o:null},
+  {n:"Woven Storage Basket", c:"Home & Living", p:540, o:650},
+  {n:"Cotton Throw Pillow Cover", c:"Home & Living", p:320, o:400},
+  // Beauty & Care
+  {n:"Gentle Face Wash 100ml", c:"Beauty & Care", p:350, o:420},
+  {n:"Deep Moisture Cream", c:"Beauty & Care", p:480, o:null},
+  {n:"Signature Perfume 50ml", c:"Beauty & Care", p:1350, o:1600},
+  {n:"Lip Balm Set (3pc)", c:"Beauty & Care", p:290, o:360},
+  {n:"Hair Growth Serum", c:"Beauty & Care", p:590, o:null},
+  // Kids & Toys
+  {n:"Building Blocks Set 200pc", c:"Kids & Toys", p:990, o:1200},
+  {n:"Remote Control Race Car", c:"Kids & Toys", p:1450, o:null},
+  {n:"Soft Plush Teddy Bear", c:"Kids & Toys", p:520, o:650},
+  {n:"Wooden Puzzle Game", c:"Kids & Toys", p:380, o:null},
+  {n:"Kids Colouring Kit", c:"Kids & Toys", p:340, o:420},
+  // Sports & Outdoor
+  {n:"Non-Slip Yoga Mat", c:"Sports & Outdoor", p:750, o:900},
+  {n:"Stainless Water Bottle 1L", c:"Sports & Outdoor", p:420, o:null},
+  {n:"Resistance Bands Set", c:"Sports & Outdoor", p:590, o:700},
+  {n:"Match Football Size 5", c:"Sports & Outdoor", p:850, o:null},
+  {n:"Cap & Sunglasses Combo", c:"Sports & Outdoor", p:460, o:580},
+  // Stationery & Gifts
+  {n:"Hardcover Notebook Set", c:"Stationery & Gifts", p:390, o:null},
+  {n:"Premium Gift Box", c:"Stationery & Gifts", p:650, o:800},
+  {n:"Executive Pen Set", c:"Stationery & Gifts", p:480, o:null},
+  {n:"Desk Organizer Tray", c:"Stationery & Gifts", p:560, o:680},
+  {n:"Greeting Card Pack (10pc)", c:"Stationery & Gifts", p:250, o:null},
+];
+catalog.forEach((p,i) => {
+  p.id = "p"+i;
+  p.img = `https://picsum.photos/seed/monozain-${p.id}/500/500`;
+  p.desc = `${p.n} from our ${p.c} collection — chosen for everyday quality, comfort and value. A simple, reliable pick that fits right into your routine.`;
+});
+
+const districts = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalokati","Jhenaidah","Joypurhat","Khagrachhari","Khulna","Kishoreganj","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"];
+
+/* ================= State ================= */
+let activeCat = "All";
+let cart = {}; // id -> qty
+
+/* ================= Render: category filter ================= */
+function renderFilterPanel(){
+  document.getElementById('filterPanel').innerHTML = categories.map(c =>
+    `<div class="filter-option${c===activeCat?' selected':''}" onclick="setCategory('${c.replace(/'/g,"\\'")}')">${c}</div>`
+  ).join('');
+  document.getElementById('filterBtn').classList.toggle('active-filter', activeCat!=="All");
+  const chipHolder = document.getElementById('activeFilterChip');
+  chipHolder.innerHTML = activeCat!=="All"
+    ? `<div class="filter-chip">${activeCat}<span class="fc-x" onclick="setCategory('All')">✕</span></div>`
+    : '';
+}
+function toggleFilterPanel(){
+  document.getElementById('filterPanel').classList.toggle('open');
+}
+function setCategory(c){
+  activeCat = c;
+  document.getElementById('filterPanel').classList.remove('open');
+  renderFilterPanel();
+  renderProducts();
+}
+document.addEventListener('click', (e) => {
+  const bar = document.getElementById('filterBar');
+  if(bar && !bar.contains(e.target)) document.getElementById('filterPanel').classList.remove('open');
+});
+
+/* ================= Render: products ================= */
+function renderProducts(){
+  let items = catalog.filter(p => (activeCat==="All" || p.c===activeCat));
+  document.getElementById('resultInfo').textContent = `${items.length} product${items.length!==1?'s':''}${activeCat!=="All" ? " in "+activeCat : ""}`;
+  const grid = document.getElementById('productGrid');
+  if(items.length===0){
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">No products found. Try a different category.</div>`;
+    return;
+  }
+  grid.innerHTML = items.map(p => `
+    <div class="card" onclick="openProductModal('${p.id}')">
+      <div class="thumb"><img src="${p.img}" alt="${p.n}" loading="lazy"></div>
+      <div class="body">
+        <div class="pname">${p.n}</div>
+        <div class="price-row">
+          <span><span class="price">৳${p.p}</span>${p.o ? `<span class="old-price">৳${p.o}</span>` : ''}</span>
+        </div>
+        <button class="add-btn" id="btn-${p.id}" onclick="event.stopPropagation(); addToCart('${p.id}')">
+          <img class="ui-icon" data-icon="lucide:plus" src="https://api.iconify.design/lucide:plus.svg" width="14" height="14" alt="">
+          Add to cart
+        </button>
+      </div>
+    </div>
+  `).join('');
+}
+
+/* ================= Search dropdown ================= */
+function handleSearchInput(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const box = document.getElementById('searchResults');
+  if(!q){ box.classList.remove('open'); box.innerHTML = ''; return; }
+  const matches = catalog.filter(p => p.n.toLowerCase().includes(q)).slice(0, 8);
+  box.innerHTML = matches.length
+    ? matches.map(p => `
+        <div class="sr-item" onclick="selectSearchResult('${p.id}')">
+          <div class="thumb"><img src="${p.img}" alt="${p.n}"></div>
+          <div class="info"><div class="name">${p.n}</div><div class="cat">${p.c}</div></div>
+          <div class="price">৳${p.p}</div>
+        </div>`).join('')
+    : `<div class="sr-empty">No products match "${q}"</div>`;
+  box.classList.add('open');
+}
+function selectSearchResult(id){
+  document.getElementById('searchResults').classList.remove('open');
+  openProductModal(id);
+}
+document.addEventListener('click', (e) => {
+  const wrap = document.querySelector('.search-wrap');
+  if(wrap && !wrap.contains(e.target)) document.getElementById('searchResults').classList.remove('open');
+});
+
+
+function addToCart(id){
+  cart[id] = (cart[id]||0) + 1;
+  updateCartBadge();
+  renderCart();
+  const btn = document.getElementById('btn-'+id);
+  if(btn){
+    btn.classList.add('added');
+    const old = btn.innerHTML;
+    btn.innerHTML = 'Added ✓';
+    setTimeout(()=>{ btn.classList.remove('added'); btn.innerHTML = old; }, 900);
+  }
+  showToast("Added to cart");
+}
+function changeQty(id, delta){
+  if(!cart[id]) return;
+  cart[id] += delta;
+  if(cart[id] <= 0) delete cart[id];
+  updateCartBadge();
+  renderCart();
+}
+function removeFromCart(id){
+  delete cart[id];
+  updateCartBadge();
+  renderCart();
+}
+function cartCount(){ return Object.values(cart).reduce((a,b)=>a+b,0); }
+function cartTotal(){
+  return Object.entries(cart).reduce((sum,[id,qty]) => {
+    const p = catalog.find(x=>x.id===id);
+    return sum + (p ? p.p*qty : 0);
+  }, 0);
+}
+function updateCartBadge(){
+  const badge = document.getElementById('cartBadge');
+  const n = cartCount();
+  badge.textContent = n;
+  badge.style.display = n>0 ? 'flex' : 'none';
+}
+function renderCart(){
+  const body = document.getElementById('cartBody');
+  const footer = document.getElementById('cartFooter');
+  const entries = Object.entries(cart);
+  if(entries.length===0){
+    body.innerHTML = `<div class="empty-state">Your cart is empty.<br>Start adding products you like!</div>`;
+    footer.innerHTML = `<button class="cta-btn secondary" onclick="closeCart()">Continue shopping</button>`;
+    return;
+  }
+  body.innerHTML = entries.map(([id,qty]) => {
+    const p = catalog.find(x=>x.id===id);
+    if(!p) return '';
+    return `
+      <div class="cart-item" onclick="openProductModal('${id}')" style="cursor:pointer;">
+        <div class="thumb"><img src="${p.img}" alt="${p.n}"></div>
+        <div class="info">
+          <div class="name">${p.n}</div>
+          <div class="cat">${p.c} · ৳${p.p} each</div>
+          <div class="qty-row">
+            <div class="qty-btn" onclick="event.stopPropagation(); changeQty('${id}',-1)">–</div>
+            <span>${qty}</span>
+            <div class="qty-btn" onclick="event.stopPropagation(); changeQty('${id}',1)">+</div>
+            <span class="price">৳${p.p*qty}</span>
+            <span class="remove-link" onclick="event.stopPropagation(); removeFromCart('${id}')">Remove</span>
+          </div>
+        </div>
+      </div>`;
+  }).join('');
+  const total = cartTotal();
+  footer.innerHTML = `
+    <div class="total-row"><span>Subtotal</span><span>৳${total}</span></div>
+    <div class="total-row"><span>Delivery</span><span>Calculated at checkout</span></div>
+    <div class="total-row grand"><span>Total</span><span>৳${total}</span></div>
+    <button class="cta-btn primary" onclick="openCheckout()">Proceed to checkout</button>
+  `;
+}
+
+/* ================= Scroll lock (cart / checkout / product modal) ================= */
+let scrollLockCount = 0;
+function lockScroll(){
+  scrollLockCount++;
+  document.body.style.overflow = 'hidden';
+}
+function unlockScroll(){
+  scrollLockCount = Math.max(0, scrollLockCount - 1);
+  if(scrollLockCount === 0) document.body.style.overflow = '';
+}
+
+function openCart(){ document.getElementById('cartOverlay').classList.add('open'); document.getElementById('cartDrawer').classList.add('open'); renderCart(); lockScroll(); }
+function closeCart(){ document.getElementById('cartOverlay').classList.remove('open'); document.getElementById('cartDrawer').classList.remove('open'); unlockScroll(); }
+
+/* ================= Checkout ================= */
+function openCheckout(){
+  if(cartCount()===0){ showToast("Your cart is empty"); return; }
+  closeCart();
+  const summary = document.getElementById('orderSummary');
+  const entries = Object.entries(cart);
+  const total = cartTotal();
+  summary.innerHTML = entries.map(([id,qty])=>{
+    const p = catalog.find(x=>x.id===id);
+    return `<div class="os-item"><span>${p.n} × ${qty}</span><span>৳${p.p*qty}</span></div>`;
+  }).join('') + `<div class="os-total"><span>Total</span><span>৳${total}</span></div>`;
+  document.getElementById('checkoutMsg').textContent = '';
+  document.getElementById('checkoutMsg').className = 'form-msg';
+  document.getElementById('confirmBtn').disabled = false;
+  document.getElementById('confirmBtn').textContent = 'Confirm Order';
+  loadDraft();
+  document.getElementById('checkoutOverlay').classList.add('open');
+  lockScroll();
+}
+function closeCheckout(){ document.getElementById('checkoutOverlay').classList.remove('open'); unlockScroll(); }
+
+/* ================= Checkout draft autosave (Google Forms style) ================= */
+const DRAFT_KEY = 'monozain-checkout-draft';
+const draftFieldIds = ['custName','custPhone','custEmail','custAddress','custDistrict','custThana','custNotes'];
+let draftSaveTimer;
+
+function handleDraftInput(){
+  const indicator = document.getElementById('saveIndicator');
+  indicator.classList.remove('saved');
+  indicator.classList.add('show');
+  indicator.innerHTML = `Saving…`;
+  clearTimeout(draftSaveTimer);
+  draftSaveTimer = setTimeout(() => {
+    const draft = {};
+    draftFieldIds.forEach(id => { draft[id] = document.getElementById(id).value; });
+    try { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch(e){}
+    indicator.classList.add('saved');
+    indicator.innerHTML = `Saved`;
+    setTimeout(() => { indicator.classList.remove('show'); }, 1500);
+  }, 600);
+}
+function loadDraft(){
+  try{
+    const raw = localStorage.getItem(DRAFT_KEY);
+    if(!raw) return;
+    const draft = JSON.parse(raw);
+    draftFieldIds.forEach(id => {
+      if(draft[id] !== undefined) document.getElementById(id).value = draft[id];
+    });
+  }catch(e){}
+}
+function clearCheckoutForm(){
+  document.getElementById('checkoutForm').reset();
+  try { localStorage.removeItem(DRAFT_KEY); } catch(e){}
+  const indicator = document.getElementById('saveIndicator');
+  indicator.classList.remove('show','saved');
+  indicator.innerHTML = '';
+  showToast("Form cleared");
+}
+
+/*
+  ---- Spreadsheet integration ----
+  Replace SHEET_WEBHOOK_URL with a Google Apps Script Web App URL (or any endpoint)
+  that appends a row to your spreadsheet. The order object shape is documented below.
+*/
+const SHEET_WEBHOOK_URL = ""; // e.g. "https://script.google.com/macros/s/XXXXXXX/exec"
+
+async function sendOrderToSheet(order){
+  if(!SHEET_WEBHOOK_URL){
+    console.log("Order (spreadsheet URL not configured yet):", order);
+    return { ok:true, simulated:true };
+  }
+  try{
+    const res = await fetch(SHEET_WEBHOOK_URL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(order)
+    });
+    return { ok: res.ok };
+  }catch(err){
+    console.error("Failed to send order to sheet:", err);
+    return { ok:false, error: err };
+  }
+}
+
+async function submitOrder(e){
+  e.preventDefault();
+  const btn = document.getElementById('confirmBtn');
+  const msg = document.getElementById('checkoutMsg');
+  const order = {
+    orderId: 'MZ' + Date.now(),
+    date: new Date().toISOString(),
+    name: document.getElementById('custName').value.trim(),
+    phone: document.getElementById('custPhone').value.trim(),
+    email: document.getElementById('custEmail').value.trim(),
+    address: document.getElementById('custAddress').value.trim(),
+    district: document.getElementById('custDistrict').value,
+    thana: document.getElementById('custThana').value.trim(),
+    notes: document.getElementById('custNotes').value.trim(),
+    items: Object.entries(cart).map(([id,qty])=>{
+      const p = catalog.find(x=>x.id===id);
+      return { name:p.n, category:p.c, price:p.p, qty, lineTotal:p.p*qty };
+    }),
+    total: cartTotal()
+  };
+
+  btn.disabled = true;
+  btn.textContent = 'Placing order…';
+  const result = await sendOrderToSheet(order);
+
+  if(result.ok){
+    msg.textContent = result.simulated
+      ? "Order captured! (Connect the spreadsheet URL to record it automatically.)"
+      : "Order placed successfully! We'll contact you soon.";
+    msg.className = 'form-msg success';
+    cart = {};
+    updateCartBadge();
+    document.getElementById('checkoutForm').reset();
+    try { localStorage.removeItem(DRAFT_KEY); } catch(err){}
+    document.getElementById('saveIndicator').classList.remove('show','saved');
+    document.getElementById('saveIndicator').innerHTML = '';
+    btn.textContent = 'Order Confirmed ✓';
+    setTimeout(()=>{ closeCheckout(); }, 1800);
+  } else {
+    msg.textContent = "Something went wrong placing your order. Please try again.";
+    msg.className = 'form-msg error';
+    btn.disabled = false;
+    btn.textContent = 'Confirm Order';
+  }
+  return false;
+}
+
+/* ================= Banner carousel ================= */
+let bannerIndex = 0, bannerTimer;
+function renderBanner(){
+  const el = document.getElementById('banner');
+  el.innerHTML = banners.map((b,i) => `
+    <div class="banner-slide${i===0?' active':''}" style="background:linear-gradient(135deg, rgba(0,0,0,.45), rgba(0,0,0,.25)), url('https://picsum.photos/seed/monozain-banner-${i}/1400/340') center/cover;">
+      <div class="bs-inner">
+        <div class="bs-eyebrow">${b.eyebrow}</div>
+        <h2>${b.title}</h2>
+        <p>${b.text}</p>
+      </div>
+    </div>
+  `).join('') + `<div class="banner-dots">${banners.map((_,i)=>`<div class="banner-dot${i===0?' active':''}" onclick="goToBanner(${i})"></div>`).join('')}</div>`;
+}
+function goToBanner(i){
+  bannerIndex = i;
+  document.querySelectorAll('.banner-slide').forEach((s,idx)=> s.classList.toggle('active', idx===i));
+  document.querySelectorAll('.banner-dot').forEach((d,idx)=> d.classList.toggle('active', idx===i));
+  resetBannerTimer();
+}
+function nextBanner(){ goToBanner((bannerIndex+1) % banners.length); }
+function resetBannerTimer(){
+  clearInterval(bannerTimer);
+  bannerTimer = setInterval(nextBanner, 4500);
+}
+
+/* ================= Product detail modal ================= */
+let modalQty = 1;
+function openProductModal(id){
+  const p = catalog.find(x=>x.id===id);
+  if(!p) return;
+  modalQty = 1;
+  renderProductModal(p);
+  document.getElementById('productOverlay').classList.add('open');
+  lockScroll();
+}
+function renderProductModal(p){
+  document.getElementById('productDetailBody').innerHTML = `
+    <div class="pd-image"><img src="${p.img}" alt="${p.n}"></div>
+    <div class="pd-content">
+      <div class="pd-cat">${p.c}</div>
+      <div class="pd-name">${p.n}</div>
+      <div class="pd-price-row">
+        <span class="pd-price">৳${p.p}</span>
+        ${p.o ? `<span class="pd-old">৳${p.o}</span>` : ''}
+      </div>
+      <div class="pd-desc">${p.desc}</div>
+      <div class="pd-qty-row">
+        <div class="qty-btn" onclick="changeModalQty(-1)">–</div>
+        <span class="qty-val" id="modalQtyVal">${modalQty}</span>
+        <div class="qty-btn" onclick="changeModalQty(1)">+</div>
+      </div>
+      <button class="cta-btn primary" onclick="addToCartFromModal('${p.id}')">Add to cart</button>
+    </div>
+  `;
+}
+function changeModalQty(delta){
+  modalQty = Math.max(1, modalQty + delta);
+  document.getElementById('modalQtyVal').textContent = modalQty;
+}
+function addToCartFromModal(id){
+  cart[id] = (cart[id]||0) + modalQty;
+  updateCartBadge();
+  renderCart();
+  showToast("Added to cart");
+  closeProductModal();
+}
+function closeProductModal(){ document.getElementById('productOverlay').classList.remove('open'); unlockScroll(); }
+
+
+let toastTimer;
+function showToast(text){
+  const t = document.getElementById('toast');
+  t.textContent = text;
+  t.classList.add('show');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(()=> t.classList.remove('show'), 1600);
+}
+
+/* ================= Theme ================= */
+function iconifyUrl(name, hex){ return `https://api.iconify.design/${name}.svg?color=%23${hex}`; }
+function currentIconHex(){ return document.body.classList.contains('dark') ? 'e7e9ea' : '0f1419'; }
+function refreshIcons(){
+  const hex = currentIconHex();
+  document.querySelectorAll('.ui-icon').forEach(el => { el.src = iconifyUrl(el.dataset.icon, hex); });
+}
+function toggleTheme(){
+  document.body.classList.toggle('dark');
+  localStorage.setItem('monozain-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+  document.getElementById('themeIcon').dataset.icon = document.body.classList.contains('dark') ? 'lucide:sun' : 'lucide:moon';
+  refreshIcons();
+  syncXIcon();
+  renderProducts(); // refresh placeholder image colors not needed, but keep UI in sync
+}
+function syncXIcon(){
+  const xIcon = document.getElementById('xIcon');
+  if(xIcon) xIcon.src = document.body.classList.contains('dark') ? 'https://cdn.simpleicons.org/x/E7E9EA' : 'https://cdn.simpleicons.org/x/0F1419';
+}
+(function initTheme(){
+  const saved = localStorage.getItem('monozain-theme');
+  if(saved === 'dark') document.body.classList.add('dark');
+})();
+
+/* ================= Init ================= */
+document.getElementById('footerYear').textContent = new Date().getFullYear();
+document.getElementById('custDistrict').innerHTML += districts.map(d=>`<option value="${d}">${d}</option>`).join('');
+renderBanner();
+resetBannerTimer();
+renderFilterPanel();
+renderProducts();
+refreshIcons();
+syncXIcon();
+</script>
+</body>
 </html>
