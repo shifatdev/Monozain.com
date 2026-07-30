@@ -105,11 +105,12 @@
     --bg:#000; --bg-elevated:#000; --border:#2f3336; --text:#e7e9ea;
     --sub:#71767b; --hover:#181818; --accent:#1d9bf0; --panel:#16181c;
   }
-  html { scroll-behavior:smooth; }
+  html { scroll-behavior:smooth; overflow-x:hidden; }
   body {
     font-family: "Segoe UI", Arial, Helvetica, sans-serif;
     background:var(--bg);
     color:var(--text);
+    overflow-x:hidden;
   }
   a { color:inherit; text-decoration:none; }
   img { max-width:100%; display:block; }
@@ -117,7 +118,7 @@
   /* ---------- Top bar (floating, transparent) ---------- */
   .topbar {
     position:fixed; top:0; left:0; right:0; z-index:80;
-    display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:14px;
+    display:grid; grid-template-columns:auto minmax(0,1fr) auto; align-items:center; gap:14px;
     padding:16px 20px;
     background:transparent; border-bottom:none; pointer-events:none;
   }
@@ -145,7 +146,7 @@
     100% { background-position:-200% center; }
   }
 
-  .search-wrap { justify-self:center; width:min(92vw, 460px); position:relative; }
+  .search-wrap { justify-self:stretch; width:100%; max-width:460px; margin:0 auto; position:relative; min-width:0; }
   .search-wrap input {
     width:100%; padding:11px 16px 11px 42px; border-radius:9999px;
     border:1px solid var(--border); background:var(--panel); color:var(--text);
@@ -186,7 +187,7 @@
     display:flex; align-items:center; justify-content:center;
   }
   @media (max-width:560px) {
-    .topbar { grid-template-columns:auto 1fr auto; padding:10px 8px; gap:6px; }
+    .topbar { grid-template-columns:auto minmax(0,1fr) auto; padding:10px 8px; gap:6px; }
     .brand-pill { padding:9px 12px; font-size:14px; }
     .search-wrap { width:100%; min-width:0; }
     .search-wrap input { padding:10px 12px 10px 36px; font-size:13px; }
@@ -262,8 +263,9 @@
   }
   .filter-chip .fc-x { cursor:pointer; opacity:.85; }
   .filter-chip .fc-x:hover { opacity:1; }
+  .control-wrap { position:relative; }
   .filter-panel {
-    display:none; position:absolute; top:56px; left:20px; z-index:40;
+    display:none; position:absolute; top:48px; left:0; z-index:40;
     background:var(--bg); border:1px solid var(--border); border-radius:16px;
     box-shadow:0 8px 30px rgba(0,0,0,0.18); padding:10px; width:min(92vw,320px);
     max-height:360px; overflow-y:auto;
@@ -472,12 +474,25 @@
 </div>
 
 <div class="filter-bar" id="filterBar">
-  <div class="filter-btn" id="filterBtn" onclick="toggleFilterPanel()">
-    <img class="ui-icon" data-icon="lucide:sliders-horizontal" src="https://api.iconify.design/lucide:sliders-horizontal.svg" width="15" height="15" alt="">
-    <span>Filter</span>
+  <div class="control-wrap">
+    <div class="filter-btn" id="filterBtn" onclick="toggleFilterPanel()">
+      <img class="ui-icon" data-icon="lucide:sliders-horizontal" src="https://api.iconify.design/lucide:sliders-horizontal.svg" width="15" height="15" alt="">
+      <span>Filter</span>
+    </div>
+    <div class="filter-panel" id="filterPanel"></div>
+  </div>
+  <div class="control-wrap">
+    <div class="filter-btn" id="sortBtn" onclick="toggleSortPanel()">
+      <img class="ui-icon" data-icon="lucide:arrow-up-down" src="https://api.iconify.design/lucide:arrow-up-down.svg" width="15" height="15" alt="">
+      <span id="sortLabel">Sort</span>
+    </div>
+    <div class="filter-panel" id="sortPanel">
+      <div class="filter-option" onclick="setSort('default')">Default</div>
+      <div class="filter-option" onclick="setSort('lowhigh')">Price: Low to High</div>
+      <div class="filter-option" onclick="setSort('highlow')">Price: High to Low</div>
+    </div>
   </div>
   <div id="activeFilterChip"></div>
-  <div class="filter-panel" id="filterPanel"></div>
 </div>
 <div class="result-info" id="resultInfo"></div>
 
@@ -497,9 +512,9 @@
       <div class="footer-label">Shop</div>
       <a href="#" onclick="footerShopCategory(event,'All')">All Products</a>
       <a href="#" onclick="footerShopCategory(event,'Electronics')">Electronics</a>
-      <a href="#" onclick="footerShopCategory(event,'Men\'s Fashion')">Men's Fashion</a>
-      <a href="#" onclick="footerShopCategory(event,'Women\'s Fashion')">Women's Fashion</a>
-      <a href="#" onclick="footerShopCategory(event,'Home &amp; Living')">Home & Living</a>
+      <a href="#" onclick="footerShopCategory(event,'Gadgets')">Gadgets</a>
+      <a href="#" onclick="footerShopCategory(event,'Watches')">Watches</a>
+      <a href="#" onclick="footerShopCategory(event,'Bags &amp; Wallets')">Bags & Wallets</a>
     </div>
     <div class="footer-col">
       <div class="footer-label">Customer Care</div>
@@ -619,87 +634,63 @@
 
 <script>
 /* ================= Product data ================= */
-const categories = ["All","Electronics","Men's Fashion","Women's Fashion","Bags & Wallets","Watches","Home & Living","Beauty & Care","Kids & Toys","Sports & Outdoor","Stationery & Gifts"];
+const categories = ["All","Electronics","Gadgets","Bags & Wallets","Watches","Stationery & Gifts"];
 
 const banners = [
-  {bg:"1d9bf0", eyebrow:"Monozain", title:"Beauty in Simplicity", text:"Discover everyday essentials, curated with care."},
-  {bg:"7856ff", eyebrow:"Free Delivery", title:"Free delivery over ৳1000", text:"Shop more, save more — across every district."},
-  {bg:"f91880", eyebrow:"New In", title:"Fresh arrivals every week", text:"Fashion, home & beauty picks you'll love."},
-  {bg:"17bf63", eyebrow:"Cash on Delivery", title:"Pay when it arrives", text:"No account, no hassle — just simple checkout."},
+  {bg:"1d9bf0", eyebrow:"Monozain", title:"Beauty in Simplicity", text:"Discover everyday essentials, curated with care.", img:"https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=1400&h=340&fit=crop&auto=format&q=80"},
+  {bg:"7856ff", eyebrow:"Free Delivery", title:"Free delivery over ৳1000", text:"Shop more, save more — across every district.", img:"https://images.unsplash.com/photo-1758351507026-71ad3645cb43?w=1400&h=340&fit=crop&auto=format&q=80"},
+  {bg:"f91880", eyebrow:"New In", title:"Fresh arrivals every week", text:"Fashion, home & beauty picks you'll love.", img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400&h=340&fit=crop&auto=format&q=80"},
+  {bg:"17bf63", eyebrow:"Cash on Delivery", title:"Pay when it arrives", text:"No account, no hassle — just simple checkout.", img:"https://images.unsplash.com/photo-1758351507026-71ad3645cb43?w=1400&h=340&fit=crop&auto=format&q=80"},
 ];
 
 const catalog = [
   // Electronics
-  {n:"Wireless Earbuds Pro", c:"Electronics", p:1450, o:1800},
-  {n:"Bluetooth Party Speaker", c:"Electronics", p:2200, o:null},
-  {n:"10000mAh Power Bank", c:"Electronics", p:1150, o:1350},
-  {n:"USB-C 6-in-1 Hub", c:"Electronics", p:990, o:null},
-  {n:"15W Wireless Charger Pad", c:"Electronics", p:750, o:900},
-  // Men's Fashion
-  {n:"Classic Cotton Polo", c:"Men's Fashion", p:650, o:800},
-  {n:"Slim Fit Denim Jeans", c:"Men's Fashion", p:1200, o:null},
-  {n:"Casual Canvas Sneakers", c:"Men's Fashion", p:1850, o:2200},
-  {n:"Genuine Leather Belt", c:"Men's Fashion", p:550, o:null},
-  {n:"Graphic Print T-Shirt", c:"Men's Fashion", p:420, o:520},
-  // Women's Fashion
-  {n:"Floral Summer Maxi Dress", c:"Women's Fashion", p:1350, o:1600},
-  {n:"Oversized Denim Jacket", c:"Women's Fashion", p:1650, o:null},
-  {n:"Embroidered Kurti Set", c:"Women's Fashion", p:1100, o:1300},
-  {n:"High Waist Skinny Jeans", c:"Women's Fashion", p:1050, o:null},
-  {n:"Chiffon Printed Saree", c:"Women's Fashion", p:1900, o:2400},
+  {n:"Wireless Earbuds Pro", c:"Electronics", p:1450, o:1800, kw:"earbuds,wireless"},
+  {n:"Bluetooth Party Speaker", c:"Electronics", p:2200, o:null, kw:"speaker,bluetooth"},
+  {n:"10000mAh Power Bank", c:"Electronics", p:1150, o:1350, kw:"powerbank,charger"},
+  {n:"USB-C 6-in-1 Hub", c:"Electronics", p:990, o:null, kw:"usb,hub"},
+  {n:"15W Wireless Charger Pad", c:"Electronics", p:750, o:900, kw:"wirelesscharger,phone"},
+  // Gadgets
+  {n:"Smart LED Strip Light", c:"Gadgets", p:890, o:1050, kw:"ledstrip,light"},
+  {n:"Mini Portable Projector", c:"Gadgets", p:3200, o:3800, kw:"projector,gadget"},
+  {n:"Digital Kitchen Scale", c:"Gadgets", p:520, o:null, kw:"kitchenscale,digital"},
+  {n:"Portable USB Mini Fan", c:"Gadgets", p:450, o:550, kw:"minifan,portable"},
+  {n:"Smart Wi-Fi Plug", c:"Gadgets", p:680, o:null, kw:"smartplug,wifi"},
   // Bags & Wallets
-  {n:"Bifold Leather Wallet", c:"Bags & Wallets", p:590, o:700},
-  {n:"Travel Backpack 35L", c:"Bags & Wallets", p:2100, o:2500},
-  {n:"Women's Crossbody Bag", c:"Bags & Wallets", p:1150, o:null},
-  {n:"14-inch Laptop Sleeve", c:"Bags & Wallets", p:680, o:820},
-  {n:"Coin & Card Pouch", c:"Bags & Wallets", p:290, o:null},
+  {n:"Bifold Leather Wallet", c:"Bags & Wallets", p:590, o:700, kw:"wallet,leather"},
+  {n:"Travel Backpack 35L", c:"Bags & Wallets", p:2100, o:2500, kw:"backpack,travel"},
+  {n:"Women's Crossbody Bag", c:"Bags & Wallets", p:1150, o:null, kw:"handbag,fashion"},
+  {n:"14-inch Laptop Sleeve", c:"Bags & Wallets", p:680, o:820, kw:"laptopbag,sleeve"},
+  {n:"Coin & Card Pouch", c:"Bags & Wallets", p:290, o:null, kw:"pouch,wallet"},
   // Watches
-  {n:"Minimalist Analog Watch", c:"Watches", p:1400, o:1700},
-  {n:"Smart Fitness Watch", c:"Watches", p:2800, o:3400},
-  {n:"Digital Sports Watch", c:"Watches", p:950, o:null},
-  {n:"Chronograph Steel Watch", c:"Watches", p:2450, o:2900},
-  {n:"Kids Cartoon Watch", c:"Watches", p:390, o:480},
-  // Home & Living
-  {n:"LED Adjustable Desk Lamp", c:"Home & Living", p:850, o:null},
-  {n:"Ceramic Mug Set (4pc)", c:"Home & Living", p:620, o:750},
-  {n:"Minimal Wall Clock", c:"Home & Living", p:780, o:null},
-  {n:"Woven Storage Basket", c:"Home & Living", p:540, o:650},
-  {n:"Cotton Throw Pillow Cover", c:"Home & Living", p:320, o:400},
-  // Beauty & Care
-  {n:"Gentle Face Wash 100ml", c:"Beauty & Care", p:350, o:420},
-  {n:"Deep Moisture Cream", c:"Beauty & Care", p:480, o:null},
-  {n:"Signature Perfume 50ml", c:"Beauty & Care", p:1350, o:1600},
-  {n:"Lip Balm Set (3pc)", c:"Beauty & Care", p:290, o:360},
-  {n:"Hair Growth Serum", c:"Beauty & Care", p:590, o:null},
-  // Kids & Toys
-  {n:"Building Blocks Set 200pc", c:"Kids & Toys", p:990, o:1200},
-  {n:"Remote Control Race Car", c:"Kids & Toys", p:1450, o:null},
-  {n:"Soft Plush Teddy Bear", c:"Kids & Toys", p:520, o:650},
-  {n:"Wooden Puzzle Game", c:"Kids & Toys", p:380, o:null},
-  {n:"Kids Colouring Kit", c:"Kids & Toys", p:340, o:420},
-  // Sports & Outdoor
-  {n:"Non-Slip Yoga Mat", c:"Sports & Outdoor", p:750, o:900},
-  {n:"Stainless Water Bottle 1L", c:"Sports & Outdoor", p:420, o:null},
-  {n:"Resistance Bands Set", c:"Sports & Outdoor", p:590, o:700},
-  {n:"Match Football Size 5", c:"Sports & Outdoor", p:850, o:null},
-  {n:"Cap & Sunglasses Combo", c:"Sports & Outdoor", p:460, o:580},
+  {n:"Minimalist Analog Watch", c:"Watches", p:1400, o:1700, kw:"watch,analog"},
+  {n:"Smart Fitness Watch", c:"Watches", p:2800, o:3400, kw:"smartwatch,fitness"},
+  {n:"Digital Sports Watch", c:"Watches", p:950, o:null, kw:"watch,sports"},
+  {n:"Chronograph Steel Watch", c:"Watches", p:2450, o:2900, kw:"watch,chronograph"},
+  {n:"Kids Cartoon Watch", c:"Watches", p:390, o:480, kw:"kidswatch,toy"},
   // Stationery & Gifts
-  {n:"Hardcover Notebook Set", c:"Stationery & Gifts", p:390, o:null},
-  {n:"Premium Gift Box", c:"Stationery & Gifts", p:650, o:800},
-  {n:"Executive Pen Set", c:"Stationery & Gifts", p:480, o:null},
-  {n:"Desk Organizer Tray", c:"Stationery & Gifts", p:560, o:680},
-  {n:"Greeting Card Pack (10pc)", c:"Stationery & Gifts", p:250, o:null},
+  {n:"Hardcover Notebook Set", c:"Stationery & Gifts", p:390, o:null, kw:"notebook,stationery"},
+  {n:"Premium Gift Box", c:"Stationery & Gifts", p:650, o:800, kw:"giftbox,present"},
+  {n:"Executive Pen Set", c:"Stationery & Gifts", p:480, o:null, kw:"pen,stationery"},
+  {n:"Desk Organizer Tray", c:"Stationery & Gifts", p:560, o:680, kw:"deskorganizer,office"},
+  {n:"Greeting Card Pack (10pc)", c:"Stationery & Gifts", p:250, o:null, kw:"greetingcard,paper"},
 ];
 catalog.forEach((p,i) => {
   p.id = "p"+i;
-  p.img = `https://picsum.photos/seed/monozain-${p.id}/500/500`;
+  p.img = `https://loremflickr.com/500/500/${p.kw}`;
   p.desc = `${p.n} from our ${p.c} collection — chosen for everyday quality, comfort and value. A simple, reliable pick that fits right into your routine.`;
 });
+// Verified real photos for confirmed items
+catalog.find(p=>p.n==="Wireless Earbuds Pro").img = "https://images.unsplash.com/photo-1757168120889-4317e57a4849?w=500&h=500&fit=crop&auto=format&q=80";
+catalog.find(p=>p.n==="Bluetooth Party Speaker").img = "https://images.unsplash.com/photo-1520390244437-6f1c5eae66ff?w=500&h=500&fit=crop&auto=format&q=80";
+catalog.find(p=>p.n==="10000mAh Power Bank").img = "https://images.unsplash.com/photo-1706275399494-fb26bbc5da63?w=500&h=500&fit=crop&auto=format&q=80";
+catalog.find(p=>p.n==="USB-C 6-in-1 Hub").img = "https://images.unsplash.com/photo-1763161786687-43d0c9babdf0?w=500&h=500&fit=crop&auto=format&q=80";
 
 const districts = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalokati","Jhenaidah","Joypurhat","Khagrachhari","Khulna","Kishoreganj","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"];
 
 /* ================= State ================= */
 let activeCat = "All";
+const DELIVERY_CHARGE = 150;
 
 /* Cart persists in localStorage. It is only ever cleared by:
    1) a confirmed checkout (see submitOrder), or
@@ -731,7 +722,21 @@ function renderFilterPanel(){
     : '';
 }
 function toggleFilterPanel(){
+  document.getElementById('sortPanel').classList.remove('open');
   document.getElementById('filterPanel').classList.toggle('open');
+}
+function toggleSortPanel(){
+  document.getElementById('filterPanel').classList.remove('open');
+  document.getElementById('sortPanel').classList.toggle('open');
+}
+let sortMode = "default";
+function setSort(mode){
+  sortMode = mode;
+  const label = document.getElementById('sortLabel');
+  label.textContent = mode==='lowhigh' ? 'Price: Low to High' : mode==='highlow' ? 'Price: High to Low' : 'Sort';
+  document.getElementById('sortBtn').classList.toggle('active-filter', mode!=='default');
+  document.getElementById('sortPanel').classList.remove('open');
+  renderProducts();
 }
 function setCategory(c){
   activeCat = c;
@@ -746,12 +751,17 @@ function footerShopCategory(e, c){
 }
 document.addEventListener('click', (e) => {
   const bar = document.getElementById('filterBar');
-  if(bar && !bar.contains(e.target)) document.getElementById('filterPanel').classList.remove('open');
+  if(bar && !bar.contains(e.target)){
+    document.getElementById('filterPanel').classList.remove('open');
+    document.getElementById('sortPanel').classList.remove('open');
+  }
 });
 
 /* ================= Render: products ================= */
 function renderProducts(){
   let items = catalog.filter(p => (activeCat==="All" || p.c===activeCat));
+  if(sortMode === 'lowhigh') items = items.slice().sort((a,b) => a.p - b.p);
+  else if(sortMode === 'highlow') items = items.slice().sort((a,b) => b.p - a.p);
   document.getElementById('resultInfo').textContent = `${items.length} product${items.length!==1?'s':''}${activeCat!=="All" ? " in "+activeCat : ""}`;
   const grid = document.getElementById('productGrid');
   if(items.length===0){
@@ -873,8 +883,8 @@ function renderCart(){
   const total = cartTotal();
   footer.innerHTML = `
     <div class="total-row"><span>Subtotal</span><span>৳${total}</span></div>
-    <div class="total-row"><span>Delivery</span><span>Calculated at checkout</span></div>
-    <div class="total-row grand"><span>Total</span><span>৳${total}</span></div>
+    <div class="total-row"><span>Delivery</span><span>৳${DELIVERY_CHARGE}</span></div>
+    <div class="total-row grand"><span>Total</span><span>৳${total+DELIVERY_CHARGE}</span></div>
     <button class="cta-btn primary" onclick="openCheckout()">Proceed to checkout</button>
   `;
 }
@@ -903,7 +913,9 @@ function openCheckout(){
   summary.innerHTML = entries.map(([id,qty])=>{
     const p = catalog.find(x=>x.id===id);
     return `<div class="os-item"><span>${p.n} × ${qty}</span><span>৳${p.p*qty}</span></div>`;
-  }).join('') + `<div class="os-total"><span>Total</span><span>৳${total}</span></div>`;
+  }).join('')
+    + `<div class="os-item"><span>Delivery</span><span>৳${DELIVERY_CHARGE}</span></div>`
+    + `<div class="os-total"><span>Total</span><span>৳${total+DELIVERY_CHARGE}</span></div>`;
   document.getElementById('checkoutMsg').textContent = '';
   document.getElementById('checkoutMsg').className = 'form-msg';
   document.getElementById('confirmBtn').disabled = false;
@@ -996,7 +1008,9 @@ async function submitOrder(e){
       const p = catalog.find(x=>x.id===id);
       return { name:p.n, category:p.c, price:p.p, qty, lineTotal:p.p*qty };
     }),
-    total: cartTotal()
+    subtotal: cartTotal(),
+    deliveryCharge: DELIVERY_CHARGE,
+    total: cartTotal() + DELIVERY_CHARGE
   };
 
   btn.disabled = true;
@@ -1031,7 +1045,7 @@ let bannerIndex = 0, bannerTimer;
 function renderBanner(){
   const el = document.getElementById('banner');
   el.innerHTML = banners.map((b,i) => `
-    <div class="banner-slide${i===0?' active':''}" style="background:linear-gradient(135deg, rgba(0,0,0,.45), rgba(0,0,0,.25)), url('https://picsum.photos/seed/monozain-banner-${i}/1400/340') center/cover;">
+    <div class="banner-slide${i===0?' active':''}" style="background:linear-gradient(135deg, rgba(0,0,0,.5), rgba(0,0,0,.35)), url('${b.img}') center/cover;">
       <div class="bs-inner">
         <div class="bs-eyebrow">${b.eyebrow}</div>
         <h2>${b.title}</h2>
