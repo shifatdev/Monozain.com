@@ -16,14 +16,18 @@
 
 <!-- ============================================================
      SEO / SOCIAL META TAGS
-     - Domain set to https://monozain.com — update if this ever changes.
+     - Domain set to https://monozain.com - update if this ever changes.
      - Image files expected at: images/mz-favicon.png (512x512 icon/logo)
        and images/mz-og-banner.png (1731x909 social preview banner).
        Add these files to the "images" folder next to this HTML file.
 ============================================================= -->
 
-<title>Monozain — Beauty in Simplicity</title>
-<meta name="description" content="Monozain — Beauty in Simplicity. Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Bengali:wght@400;600;700;800&display=swap">
+
+<title>Monozain | Beauty in Simplicity</title>
+<meta name="description" content="Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
 <meta name="keywords" content="Monozain, online shop Bangladesh, ecommerce, fashion, electronics, home living, beauty, cash on delivery, buy online Bangladesh">
 <meta name="author" content="Monozain">
 <meta name="robots" content="index, follow">
@@ -38,7 +42,7 @@
 <!-- Open Graph / Facebook -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Monozain">
-<meta property="og:title" content="Monozain — Beauty in Simplicity">
+<meta property="og:title" content="Monozain | Beauty in Simplicity">
 <meta property="og:description" content="Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
 <meta property="og:url" content="https://monozain.com/">
 <meta property="og:image" content="https://monozain.com/images/mz-og-banner.png">
@@ -51,7 +55,7 @@
 <!-- Twitter / X Card -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@MonozainX">
-<meta name="twitter:title" content="Monozain — Beauty in Simplicity">
+<meta name="twitter:title" content="Monozain | Beauty in Simplicity">
 <meta name="twitter:description" content="Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh. No account needed, Cash on Delivery available.">
 <meta name="twitter:image" content="https://monozain.com/images/mz-og-banner.png">
 
@@ -59,7 +63,7 @@
 <meta name="theme-color" content="#1d9bf0">
 
 <!-- ============================================================
-     STRUCTURED DATA (JSON-LD) — helps Google show Monozain with
+     STRUCTURED DATA (JSON-LD) - helps Google show Monozain with
      a logo, sitelinks, and social profiles in search results.
 ============================================================= -->
 <script type="application/ld+json">
@@ -67,7 +71,7 @@
   "@context": "https://schema.org",
   "@type": "Organization",
   "name": "Monozain",
-  "alternateName": "Monozain — Beauty in Simplicity",
+  "alternateName": "Monozain | Beauty in Simplicity",
   "url": "https://monozain.com/",
   "logo": "https://monozain.com/images/mz-favicon.png",
   "sameAs": [
@@ -82,7 +86,7 @@
   "@type": "WebSite",
   "name": "Monozain",
   "url": "https://monozain.com/",
-  "description": "Monozain — Beauty in Simplicity. Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh."
+  "description": "Shop quality electronics, fashion, home & lifestyle essentials online in Bangladesh."
 }
 </script>
 
@@ -113,6 +117,9 @@
     overflow-x:hidden;
   }
   a { color:inherit; text-decoration:none; }
+  .ui-icon { color:var(--text); flex-shrink:0; }
+  .social-line svg { flex-shrink:0; vertical-align:middle; }
+  .social-line #xIcon { color:var(--text); }
   img { max-width:100%; display:block; }
 
   /* ---------- Top bar (floating, transparent) ---------- */
@@ -207,23 +214,54 @@
   .whatsapp-fab:hover { transform:scale(1.06); }
   .whatsapp-fab img { width:30px; height:30px; }
 
-  /* ---------- Banner carousel ---------- */
+  /* ---------- Banner carousel (fluid, all screen sizes) ---------- */
   .banner {
-    position:relative; width:100%; height:340px; overflow:hidden;
+    position:relative; width:100%; overflow:hidden; touch-action:pan-y;
+    height:clamp(330px, 36vw, 440px);
   }
   .banner-slide {
-    position:absolute; inset:0; opacity:0; transition:opacity .6s ease;
+    position:absolute; inset:0; opacity:0; visibility:hidden;
+    transition:opacity .7s ease, visibility .7s ease;
     display:flex; align-items:center; justify-content:center; text-align:center;
-    padding:100px 20px 20px 20px; color:#fff;
+    padding:clamp(84px,9vw,110px) clamp(18px,5vw,72px) 44px; color:#fff; overflow:hidden;
+    background:linear-gradient(135deg, var(--b1), var(--b2));
   }
-  .banner-slide.active { opacity:1; }
-  .banner-slide .bs-inner { max-width:640px; }
-  .banner-slide .bs-eyebrow { font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase; opacity:.9; margin-bottom:10px; }
-  .banner-slide h2 { font-size:clamp(24px,4.4vw,38px); font-weight:800; line-height:1.2; margin-bottom:10px; }
-  .banner-slide p { font-size:clamp(13px,2vw,16px); opacity:.95; }
+  .banner-slide.active { opacity:1; visibility:visible; }
+  .banner-slide::before, .banner-slide::after {
+    content:""; position:absolute; border-radius:50%; pointer-events:none; background:#fff;
+  }
+  .banner-slide::before { width:clamp(220px,36vw,460px); aspect-ratio:1; top:-22%; right:-6%; opacity:.09; }
+  .banner-slide::after  { width:clamp(160px,26vw,340px); aspect-ratio:1; bottom:-34%; left:30%; opacity:.07; }
+  .banner-slide .bs-shade {
+    position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(90deg, rgba(0,0,0,.30), rgba(0,0,0,0) 65%);
+  }
+  .banner-slide .bs-art {
+    position:absolute; right:clamp(-30px,4vw,80px); top:50%; transform:translateY(-44%);
+    width:clamp(180px,36vw,460px); height:auto; opacity:.16; pointer-events:none;
+  }
+  .banner-slide .bs-inner { position:relative; z-index:2; max-width:640px; }
+  .banner-slide .bs-eyebrow {
+    display:inline-block; font-size:12px; font-weight:800; letter-spacing:.1em; text-transform:uppercase;
+    padding:5px 12px; border-radius:9999px; background:rgba(255,255,255,.18);
+    backdrop-filter:blur(4px); -webkit-backdrop-filter:blur(4px); margin-bottom:14px;
+  }
+  .banner-slide h2 { font-size:clamp(24px,4.4vw,44px); font-weight:800; line-height:1.15; margin-bottom:10px; text-wrap:balance; text-shadow:0 2px 14px rgba(0,0,0,.25); }
+  .banner-slide p { font-size:clamp(13px,1.9vw,17px); opacity:.95; margin-bottom:18px; text-wrap:balance; }
+  .bs-cta {
+    display:inline-flex; align-items:center; gap:6px; padding:10px 22px; border-radius:9999px;
+    background:#fff; color:#0f1419; font-weight:800; font-size:14px; border:none; cursor:pointer;
+    box-shadow:0 4px 14px rgba(0,0,0,.22); transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .bs-cta:hover { transform:translateY(-2px); box-shadow:0 8px 20px rgba(0,0,0,.28); }
   .banner-dots { position:absolute; bottom:16px; left:50%; transform:translateX(-50%); display:flex; gap:8px; z-index:5; }
   .banner-dot { width:8px; height:8px; border-radius:50%; background:rgba(255,255,255,0.5); cursor:pointer; transition:background .2s ease, width .2s ease; }
   .banner-dot.active { background:#fff; width:22px; border-radius:9999px; }
+  @media (min-width:900px) {
+    .banner-slide { justify-content:flex-start; text-align:left; padding-left:max(72px, calc((100vw - 1180px)/2 + 24px)); }
+    .banner-slide .bs-art { right:max(48px, calc((100vw - 1180px)/2 + 24px)); opacity:.28; }
+  }
+  @media (prefers-reduced-motion:reduce) { .banner-slide { transition:none; } }
 
   /* ---------- Hero ---------- */
   .hero {
@@ -442,6 +480,38 @@
     transition:opacity .2s ease, transform .2s ease;
   }
   .toast.show { opacity:1; transform:translateX(-50%) translateY(0); }
+
+  /* ---------- Language pill ---------- */
+  .lang-pill {
+    display:inline-flex; align-items:center; gap:2px; padding:3px; height:40px;
+    border:1px solid var(--border); border-radius:9999px; background:var(--panel);
+    box-shadow:0 2px 10px rgba(0,0,0,0.12); flex-shrink:0;
+  }
+  .lang-pill button {
+    border:none; background:transparent; color:var(--sub); cursor:pointer;
+    font-size:12px; font-weight:800; padding:0 11px; height:100%; min-width:36px;
+    border-radius:9999px; transition:background .2s ease, color .2s ease;
+  }
+  .lang-pill button:hover { color:var(--text); }
+  .lang-pill button.active { background:var(--accent); color:#fff; }
+  .lang-pill button:focus-visible { box-shadow:0 0 0 2px var(--accent); }
+  @media (max-width:560px) {
+    .lang-pill { height:36px; }
+    .lang-pill button { font-size:11px; padding:0 8px; min-width:30px; }
+  }
+  @media (max-width:380px) {
+    .brand-pill .brand-text { font-size:13px; }
+    .lang-pill button { padding:0 6px; min-width:26px; }
+  }
+
+  /* ---------- Bengali typography ---------- */
+  body.bn {
+    font-family:"Noto Sans Bengali","Nirmala UI","Kalpurush","Siyam Rupali","Vrinda","Segoe UI",Arial,sans-serif;
+    line-height:1.6;
+  }
+  body.bn * { letter-spacing:normal !important; }
+  body.bn .banner-slide h2, body.bn .hero h1 { line-height:1.4; }
+  body.bn .lang-pill button:first-child { font-family:"Segoe UI",Arial,sans-serif; }
 </style>
 </head>
 <body>
@@ -449,16 +519,20 @@
 <div class="topbar">
   <div class="brand-pill" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span class="brand-text">Monozain</span></div>
   <div class="search-wrap">
-    <img class="ui-icon" data-icon="lucide:search" src="https://api.iconify.design/lucide:search.svg" width="17" height="17" alt="">
-    <input id="searchInput" type="text" placeholder="Search products…" oninput="handleSearchInput()" onfocus="handleSearchInput()">
+    <svg class="ui-icon" data-icon="lucide:search" xmlns="http://www.w3.org/2000/svg" width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+    <input id="searchInput" type="text" placeholder="Search products…" data-i18n-ph="search" oninput="handleSearchInput()" onfocus="handleSearchInput()">
     <div class="search-results" id="searchResults"></div>
   </div>
   <div class="topbar-right">
-    <div class="icon-circle theme-toggle" onclick="toggleTheme()">
-      <img id="themeIcon" class="ui-icon" data-icon="lucide:moon" src="https://api.iconify.design/lucide:moon.svg" width="18" height="18" alt="Toggle theme">
+    <div class="lang-pill" id="langPill" role="group" aria-label="Language / ভাষা">
+      <button type="button" data-lang="en" onclick="setLang('en')" aria-label="English">EN</button>
+      <button type="button" data-lang="bn" onclick="setLang('bn')" aria-label="বাংলা">বাং</button>
     </div>
-    <div class="icon-circle" onclick="openCart()">
-      <img class="ui-icon" data-icon="lucide:shopping-cart" src="https://api.iconify.design/lucide:shopping-cart.svg" width="18" height="18" alt="Cart">
+    <div class="icon-circle theme-toggle" role="button" tabindex="0" aria-label="Toggle theme" onclick="toggleTheme()">
+      <svg class="ui-icon" id="themeIcon" data-icon="lucide:moon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+    </div>
+    <div class="icon-circle" role="button" tabindex="0" aria-label="Cart" onclick="openCart()">
+      <svg class="ui-icon" data-icon="lucide:shopping-cart" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="8" cy="21" r="1"/><circle cx="19" cy="21" r="1"/><path d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12"/></svg>
       <span class="cart-badge" id="cartBadge" style="display:none;">0</span>
     </div>
   </div>
@@ -467,29 +541,29 @@
 <div class="banner" id="banner"></div>
 
 <div class="hero">
-  <div class="demo-badge">(DEMO — Being Developed)</div>
-  <h1>Everyday essentials, picked with care.</h1>
-  <p>Quality electronics, fashion, home & lifestyle products — delivered across Bangladesh. No account needed to shop.</p>
+  <div class="demo-badge" data-i18n="demoBadge">DEMO · Under development</div>
+  <h1 data-i18n="heroTitle">Everyday essentials, picked with care.</h1>
+  <p data-i18n="heroText">Quality electronics, fashion, home & lifestyle products, delivered across Bangladesh. No account needed to shop.</p>
   <div class="section-underline"></div>
 </div>
 
 <div class="filter-bar" id="filterBar">
   <div class="control-wrap">
     <div class="filter-btn" id="filterBtn" onclick="toggleFilterPanel()">
-      <img class="ui-icon" data-icon="lucide:sliders-horizontal" src="https://api.iconify.design/lucide:sliders-horizontal.svg" width="15" height="15" alt="">
-      <span>Filter</span>
+      <svg class="ui-icon" data-icon="lucide:sliders-horizontal" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 4h-7M10 4H3M21 12h-9M8 12H3M21 20h-5M12 20H3M14 2v4M8 10v4M16 18v4"/></svg>
+      <span data-i18n="filter">Filter</span>
     </div>
     <div class="filter-panel" id="filterPanel"></div>
   </div>
   <div class="control-wrap">
     <div class="filter-btn" id="sortBtn" onclick="toggleSortPanel()">
-      <img class="ui-icon" data-icon="lucide:arrow-up-down" src="https://api.iconify.design/lucide:arrow-up-down.svg" width="15" height="15" alt="">
+      <svg class="ui-icon" data-icon="lucide:arrow-up-down" xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m21 16-4 4-4-4M17 20V4M3 8l4-4 4 4M7 4v16"/></svg>
       <span id="sortLabel">Sort</span>
     </div>
     <div class="filter-panel" id="sortPanel">
-      <div class="filter-option" onclick="setSort('default')">Default</div>
-      <div class="filter-option" onclick="setSort('lowhigh')">Price: Low to High</div>
-      <div class="filter-option" onclick="setSort('highlow')">Price: High to Low</div>
+      <div class="filter-option" onclick="setSort('default')" data-i18n="sortDefault">Default</div>
+      <div class="filter-option" onclick="setSort('lowhigh')" data-i18n="lowhigh">Price: Low to High</div>
+      <div class="filter-option" onclick="setSort('highlow')" data-i18n="highlow">Price: High to Low</div>
     </div>
   </div>
   <div id="activeFilterChip"></div>
@@ -504,41 +578,41 @@
   <div class="footer-top">
     <div>
       <div class="footer-brand">Monozain</div>
-      <div class="footer-tagline">Curated everyday products at fair prices, delivered to your doorstep across Bangladesh.</div>
-      <div class="footer-meaning">The name <strong>Monozain</strong> blends <em>"Mono"</em> — one, singular — with <em>"Zain"</em>, a word rooted in grace and beauty. Together, it means one place, beautifully simple: our promise of <strong>Beauty in Simplicity</strong>.</div>
+      <div class="footer-tagline" data-i18n="footerTagline">Curated everyday products at fair prices, delivered to your doorstep across Bangladesh.</div>
+      <div class="footer-meaning" data-i18n="footerMeaning">The name <strong>Monozain</strong> brings together <em>"Mono"</em>, meaning one, and <em>"Zain"</em>, a word rooted in grace and beauty. Together, it means one place, beautifully simple: our promise of <strong>Beauty in Simplicity</strong>.</div>
     </div>
 
     <div class="footer-col">
-      <div class="footer-label">Shop</div>
-      <a href="#" onclick="footerShopCategory(event,'All')">All Products</a>
-      <a href="#" onclick="footerShopCategory(event,'Electronics')">Electronics</a>
-      <a href="#" onclick="footerShopCategory(event,'Gadgets')">Gadgets</a>
-      <a href="#" onclick="footerShopCategory(event,'Watches')">Watches</a>
-      <a href="#" onclick="footerShopCategory(event,'Bags &amp; Wallets')">Bags & Wallets</a>
+      <div class="footer-label" data-i18n="shop">Shop</div>
+      <a href="#" onclick="footerShopCategory(event,'All')" data-i18n="allProducts">All Products</a>
+      <a href="#" onclick="footerShopCategory(event,'Electronics')" data-cat="Electronics">Electronics</a>
+      <a href="#" onclick="footerShopCategory(event,'Gadgets')" data-cat="Gadgets">Gadgets</a>
+      <a href="#" onclick="footerShopCategory(event,'Watches')" data-cat="Watches">Watches</a>
+      <a href="#" onclick="footerShopCategory(event,'Bags &amp; Wallets')" data-cat="Bags &amp; Wallets">Bags & Wallets</a>
     </div>
     <div class="footer-col">
-      <div class="footer-label">Customer Care</div>
-      <span class="fline">Cash on Delivery available</span>
-      <span class="fline">Delivery across all districts</span>
-      <span class="fline">Easy 3-day exchange</span>
-      <a href="#" onclick="return false;">Chat with us on WhatsApp</a>
+      <div class="footer-label" data-i18n="care">Customer Care</div>
+      <span class="fline" data-i18n="cod">Cash on Delivery available</span>
+      <span class="fline" data-i18n="deliveryAll">Delivery across all districts</span>
+      <span class="fline" data-i18n="exchange">Easy 3-day exchange</span>
+      <a href="#" onclick="return false;" data-i18n="chatWa">Chat with us on WhatsApp</a>
     </div>
     <div class="footer-col">
-      <div class="footer-label">Follow Us</div>
+      <div class="footer-label" data-i18n="follow">Follow Us</div>
       <a href="https://facebook.com/monozainfb" target="_blank" rel="noopener" class="social-line">
-        <img src="https://cdn.simpleicons.org/facebook/1877F2" width="18" height="18" alt="Facebook"> Facebook
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#1877F2" aria-hidden="true"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook
       </a>
       <a href="https://x.com/MonozainX" target="_blank" rel="noopener" class="social-line">
-        <img id="xIcon" src="https://cdn.simpleicons.org/x/0F1419" width="18" height="18" alt="X (Twitter)"> X (Twitter)
+        <svg id="xIcon" xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg> X (Twitter)
       </a>
       <a href="#" onclick="return false;" class="social-line">
-        <img src="https://cdn.simpleicons.org/whatsapp/25D366" width="18" height="18" alt="WhatsApp"> WhatsApp
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="#25D366" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg> WhatsApp
       </a>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© <span id="footerYear"></span> Monozain. All rights reserved.</span>
-    <span>Made with care by <a href="https://shifat.dev" target="_blank" rel="noopener">Sarowar Shifat</a></span>
+    <span data-i18n="rights">© <span id="footerYear"></span> Monozain. All rights reserved.</span>
+    <span data-i18n="madeBy">Made with care by <a href="https://shifat.dev" target="_blank" rel="noopener">Sarowar Shifat</a></span>
   </div>
 </footer>
 
@@ -546,9 +620,9 @@
 <div class="overlay" id="cartOverlay" onclick="closeCart()"></div>
 <div class="drawer" id="cartDrawer">
   <div class="drawer-header">
-    <h3>Your Cart</h3>
-    <div class="icon-circle" onclick="closeCart()">
-      <img class="ui-icon" data-icon="lucide:x" src="https://api.iconify.design/lucide:x.svg" width="16" height="16" alt="Close">
+    <h3 data-i18n="yourCart">Your Cart</h3>
+    <div class="icon-circle" role="button" tabindex="0" aria-label="Close" onclick="closeCart()">
+      <svg class="ui-icon" data-icon="lucide:x" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
     </div>
   </div>
   <div class="drawer-body" id="cartBody"></div>
@@ -559,12 +633,12 @@
 <div class="modal-overlay" id="checkoutOverlay">
   <div class="modal">
     <div class="modal-header">
-      <h3>Checkout</h3>
+      <h3 data-i18n="checkout">Checkout</h3>
       <div class="checkout-header-actions">
         <span class="save-indicator" id="saveIndicator"></span>
-        <button type="button" class="clear-btn" onclick="clearCheckoutForm()">Clear</button>
-        <div class="icon-circle" onclick="closeCheckout()">
-          <img class="ui-icon" data-icon="lucide:x" src="https://api.iconify.design/lucide:x.svg" width="16" height="16" alt="Close">
+        <button type="button" class="clear-btn" onclick="clearCheckoutForm()" data-i18n="clear">Clear</button>
+        <div class="icon-circle" role="button" tabindex="0" aria-label="Close" onclick="closeCheckout()">
+          <svg class="ui-icon" data-icon="lucide:x" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
         </div>
       </div>
     </div>
@@ -572,40 +646,40 @@
       <div class="order-summary" id="orderSummary"></div>
       <form id="checkoutForm" onsubmit="return submitOrder(event)" oninput="handleDraftInput()">
         <div class="field">
-          <label>Full Name <span class="req">*</span></label>
-          <input type="text" id="custName" required placeholder="e.g. Md. Rahim Islam">
+          <label data-i18n="fullName">Full Name <span class="req">*</span></label>
+          <input type="text" id="custName" required placeholder="e.g. Md. Rahim Islam" data-i18n-ph="namePh">
         </div>
         <div class="field-row">
           <div class="field">
-            <label>Phone Number <span class="req">*</span></label>
+            <label data-i18n="phone">Phone Number <span class="req">*</span></label>
             <input type="tel" id="custPhone" required placeholder="01XXXXXXXXX">
           </div>
           <div class="field">
-            <label>Email <span class="req">*</span></label>
+            <label data-i18n="email">Email <span class="req">*</span></label>
             <input type="email" id="custEmail" required placeholder="you@example.com">
           </div>
         </div>
         <div class="field">
-          <label>Full Address <span class="req">*</span></label>
-          <textarea id="custAddress" required placeholder="House no, road, area"></textarea>
+          <label data-i18n="address">Full Address <span class="req">*</span></label>
+          <textarea id="custAddress" required placeholder="House no, road, area" data-i18n-ph="addressPh"></textarea>
         </div>
         <div class="field-row">
           <div class="field">
-            <label>District <span class="req">*</span></label>
+            <label data-i18n="district">District <span class="req">*</span></label>
             <select id="custDistrict" required>
               <option value="" disabled selected>Select district</option>
             </select>
           </div>
           <div class="field">
-            <label>Thana / Upazila <span class="req">*</span></label>
-            <input type="text" id="custThana" required placeholder="e.g. Sadar">
+            <label data-i18n="thana">Thana / Upazila <span class="req">*</span></label>
+            <input type="text" id="custThana" required placeholder="e.g. Sadar" data-i18n-ph="thanaPh">
           </div>
         </div>
         <div class="field">
-          <label>Order Notes (optional)</label>
-          <textarea id="custNotes" placeholder="Delivery instructions, gift note, etc."></textarea>
+          <label data-i18n="notes">Order Notes (optional)</label>
+          <textarea id="custNotes" placeholder="Delivery instructions, gift note, etc." data-i18n-ph="notesPh"></textarea>
         </div>
-        <div class="confirm-note">We will call to confirm the order before sending.</div>
+        <div class="confirm-note" data-i18n="confirmNote">We will call to confirm the order before sending.</div>
         <button type="submit" class="cta-btn primary" id="confirmBtn">Confirm Order</button>
         <div class="form-msg" id="checkoutMsg"></div>
       </form>
@@ -617,76 +691,137 @@
 <div class="modal-overlay" id="productOverlay">
   <div class="modal">
     <div class="modal-header">
-      <h3>Product Details</h3>
-      <div class="icon-circle" onclick="closeProductModal()">
-        <img class="ui-icon" data-icon="lucide:x" src="https://api.iconify.design/lucide:x.svg" width="16" height="16" alt="Close">
+      <h3 data-i18n="productDetails">Product Details</h3>
+      <div class="icon-circle" role="button" tabindex="0" aria-label="Close" onclick="closeProductModal()">
+        <svg class="ui-icon" data-icon="lucide:x" xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M18 6 6 18M6 6l12 12"/></svg>
       </div>
     </div>
     <div class="pd-body" id="productDetailBody"></div>
   </div>
 </div>
 
-<a class="whatsapp-fab" href="#" onclick="return false;" title="Chat with us on WhatsApp">
-  <img src="https://api.iconify.design/mdi:whatsapp.svg?color=%23ffffff" width="30" height="30" alt="WhatsApp">
+<a class="whatsapp-fab" href="#" onclick="return false;" title="Chat with us on WhatsApp" data-i18n-title="chatWa">
+  <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="#ffffff" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <div class="toast" id="toast"></div>
 
 <script>
+/* ================= Language (English / বাংলা) ================= */
+const I18N = { en: {"search": "Search products…", "demoBadge": "DEMO · Under development", "heroTitle": "Everyday essentials, picked with care.", "heroText": "Quality electronics, fashion, home &amp; lifestyle products, delivered across Bangladesh. No account needed to shop.", "filter": "Filter", "sort": "Sort", "sortDefault": "Default", "lowhigh": "Price: Low to High", "highlow": "Price: High to Low", "allProducts": "All Products", "footerTagline": "Curated everyday products at fair prices, delivered to your doorstep across Bangladesh.", "footerMeaning": "The name <strong>Monozain</strong> brings together <em>\"Mono\"</em>, meaning one, and <em>\"Zain\"</em>, a word rooted in grace and beauty. Together, it means one place, beautifully simple: our promise of <strong>Beauty in Simplicity</strong>.", "shop": "Shop", "care": "Customer Care", "cod": "Cash on Delivery available", "deliveryAll": "Delivery across all districts", "exchange": "Easy 3-day exchange", "chatWa": "Chat with us on WhatsApp", "follow": "Follow Us", "rights": "© {y} Monozain. All rights reserved.", "madeBy": "Made with care by <a href=\"https://shifat.dev\" target=\"_blank\" rel=\"noopener\">Sarowar Shifat</a>", "yourCart": "Your Cart", "checkout": "Checkout", "clear": "Clear", "productDetails": "Product Details", "fullName": "Full Name <span class=\"req\">*</span>", "phone": "Phone Number <span class=\"req\">*</span>", "email": "Email <span class=\"req\">*</span>", "address": "Full Address <span class=\"req\">*</span>", "district": "District <span class=\"req\">*</span>", "thana": "Thana / Upazila <span class=\"req\">*</span>", "notes": "Order Notes (optional)", "namePh": "e.g. Md. Rahim Islam", "addressPh": "House no, road, area", "selectDistrict": "Select district", "thanaPh": "e.g. Sadar", "notesPh": "Delivery instructions, gift note, etc.", "confirmNote": "We will call to confirm the order before sending.", "confirmOrder": "Confirm Order", "placing": "Placing order…", "orderConfirmed": "Order Confirmed ✓", "addToCart": "Add to cart", "added": "Added ✓", "addedToast": "Added to cart", "cartEmpty": "Your cart is empty.<br>Start adding products you like!", "continueShopping": "Continue shopping", "each": "each", "remove": "Remove", "subtotal": "Subtotal", "delivery": "Delivery", "total": "Total", "proceed": "Proceed to checkout", "cartEmptyToast": "Your cart is empty", "saving": "Saving…", "saved": "Saved", "formCleared": "Form cleared", "orderCaptured": "Order captured! (Connect the spreadsheet URL to record it automatically.)", "orderPlaced": "Order placed successfully! We'll contact you soon.", "orderError": "Something went wrong placing your order. Please try again.", "noProducts": "No products found. Try a different category.", "noMatch": "No products match \"{q}\"", "shopNow": "Shop now", "cat_All": "All", "cat_Electronics": "Electronics", "cat_Gadgets": "Gadgets", "cat_Bags & Wallets": "Bags & Wallets", "cat_Watches": "Watches", "cat_Stationery & Gifts": "Stationery & Gifts", "pageTitle": "Monozain | Beauty in Simplicity"}, bn: {"search": "পণ্য খুঁজুন…", "demoBadge": "ডেমো · কাজ চলছে", "heroTitle": "প্রতিদিনের দরকারি জিনিস, যত্ন করে বেছে নেওয়া।", "heroText": "মানসম্মত ইলেকট্রনিক্স, ফ্যাশন, ঘরের জিনিস আর লাইফস্টাইল পণ্য পাবেন এক জায়গায়। সারা বাংলাদেশে ডেলিভারি, কেনাকাটার জন্য অ্যাকাউন্ট খুলতে হবে না।", "filter": "ফিল্টার", "sort": "সাজান", "sortDefault": "ডিফল্ট", "lowhigh": "দাম: কম থেকে বেশি", "highlow": "দাম: বেশি থেকে কম", "allProducts": "সব পণ্য", "footerTagline": "ন্যায্য দামে বাছাই করা নিত্যপ্রয়োজনীয় পণ্য, সারা বাংলাদেশে আপনার দোরগোড়ায়।", "footerMeaning": "<strong>Monozain</strong> নামটি এসেছে দুটি অংশ থেকে: <em>\"মনো\"</em> মানে এক, আর <em>\"জাইন\"</em> মানে সৌন্দর্য ও শোভা। দুটি মিলে দাঁড়ায় এক জায়গা, সুন্দর ও সহজ। এটাই আমাদের অঙ্গীকার: <strong>সরলতায় সৌন্দর্য</strong>।", "shop": "কেনাকাটা", "care": "গ্রাহক সেবা", "cod": "ক্যাশ অন ডেলিভারি পাওয়া যায়", "deliveryAll": "সব জেলায় ডেলিভারি", "exchange": "৩ দিনের মধ্যে সহজ এক্সচেঞ্জ", "chatWa": "হোয়াটসঅ্যাপে মেসেজ করুন", "follow": "আমাদের সাথে থাকুন", "rights": "© {y} Monozain। সর্বস্বত্ব সংরক্ষিত।", "madeBy": "যত্ন করে তৈরি করেছেন <a href=\"https://shifat.dev\" target=\"_blank\" rel=\"noopener\">Sarowar Shifat</a>", "yourCart": "আপনার কার্ট", "checkout": "চেকআউট", "clear": "মুছুন", "productDetails": "পণ্যের বিবরণ", "fullName": "আপনার নাম <span class=\"req\">*</span>", "phone": "মোবাইল নম্বর <span class=\"req\">*</span>", "email": "ইমেইল <span class=\"req\">*</span>", "address": "পূর্ণ ঠিকানা <span class=\"req\">*</span>", "district": "জেলা <span class=\"req\">*</span>", "thana": "থানা / উপজেলা <span class=\"req\">*</span>", "notes": "অতিরিক্ত নোট (ঐচ্ছিক)", "namePh": "যেমন: মোঃ রহিম ইসলাম", "addressPh": "বাড়ি নং, রাস্তা, এলাকা", "selectDistrict": "জেলা বেছে নিন", "thanaPh": "যেমন: সদর", "notesPh": "ডেলিভারি নির্দেশনা, উপহারের বার্তা ইত্যাদি", "confirmNote": "পাঠানোর আগে অর্ডার কনফার্ম করতে আমরা আপনাকে ফোন করব।", "confirmOrder": "অর্ডার কনফার্ম করুন", "placing": "অর্ডার হচ্ছে…", "orderConfirmed": "অর্ডার কনফার্ম হয়েছে ✓", "addToCart": "কার্টে যোগ করুন", "added": "যোগ হয়েছে ✓", "addedToast": "কার্টে যোগ করা হয়েছে", "cartEmpty": "আপনার কার্ট এখন খালি।<br>পছন্দের পণ্য যোগ করা শুরু করুন!", "continueShopping": "আরও কেনাকাটা করুন", "each": "প্রতিটি", "remove": "বাদ দিন", "subtotal": "সাবটোটাল", "delivery": "ডেলিভারি চার্জ", "total": "সর্বমোট", "proceed": "চেকআউটে যান", "cartEmptyToast": "আপনার কার্ট খালি", "saving": "সেভ হচ্ছে…", "saved": "সেভ হয়েছে", "formCleared": "ফর্ম পরিষ্কার করা হয়েছে", "orderCaptured": "অর্ডার পাওয়া গেছে! (নিজে থেকে রেকর্ড করতে স্প্রেডশিটের URL যুক্ত করুন।)", "orderPlaced": "আপনার অর্ডার সম্পন্ন হয়েছে! আমরা শিগগিরই যোগাযোগ করব।", "orderError": "অর্ডার করতে একটু সমস্যা হয়েছে। আবার চেষ্টা করুন।", "noProducts": "কোনো পণ্য পাওয়া যায়নি। অন্য ক্যাটাগরি দেখুন।", "noMatch": "\"{q}\" নামে কোনো পণ্য পাওয়া যায়নি", "shopNow": "এখনই কিনুন", "cat_All": "সব", "cat_Electronics": "ইলেকট্রনিক্স", "cat_Gadgets": "গ্যাজেট", "cat_Bags & Wallets": "ব্যাগ ও ওয়ালেট", "cat_Watches": "ঘড়ি", "cat_Stationery & Gifts": "স্টেশনারি ও গিফট", "pageTitle": "Monozain | সরলতায় সৌন্দর্য"} };
+const PNAME_BN = {"Wireless Earbuds Pro": "ওয়্যারলেস ইয়ারবাডস প্রো", "Bluetooth Party Speaker": "ব্লুটুথ পার্টি স্পিকার", "Smart LED Strip Light": "স্মার্ট এলইডি স্ট্রিপ লাইট", "Mini Portable Projector": "মিনি পোর্টেবল প্রজেক্টর", "Bifold Leather Wallet": "বাইফোল্ড লেদার ওয়ালেট", "Travel Backpack 35L": "ট্রাভেল ব্যাকপ্যাক (৩৫ লিটার)", "Minimalist Analog Watch": "মিনিমালিস্ট অ্যানালগ ওয়াচ", "Smart Fitness Watch": "স্মার্ট ফিটনেস ওয়াচ", "Hardcover Notebook Set": "হার্ডকভার নোটবুক সেট", "Premium Gift Box": "প্রিমিয়াম গিফট বক্স"};
+const DISTRICT_BN = {"Bagerhat": "বাগেরহাট", "Bandarban": "বান্দরবান", "Barguna": "বরগুনা", "Barishal": "বরিশাল", "Bhola": "ভোলা", "Bogura": "বগুড়া", "Brahmanbaria": "ব্রাহ্মণবাড়িয়া", "Chandpur": "চাঁদপুর", "Chapainawabganj": "চাঁপাইনবাবগঞ্জ", "Chattogram": "চট্টগ্রাম", "Chuadanga": "চুয়াডাঙ্গা", "Cox's Bazar": "কক্সবাজার", "Cumilla": "কুমিল্লা", "Dhaka": "ঢাকা", "Dinajpur": "দিনাজপুর", "Faridpur": "ফরিদপুর", "Feni": "ফেনী", "Gaibandha": "গাইবান্ধা", "Gazipur": "গাজীপুর", "Gopalganj": "গোপালগঞ্জ", "Habiganj": "হবিগঞ্জ", "Jamalpur": "জামালপুর", "Jashore": "যশোর", "Jhalokati": "ঝালকাঠি", "Jhenaidah": "ঝিনাইদহ", "Joypurhat": "জয়পুরহাট", "Khagrachhari": "খাগড়াছড়ি", "Khulna": "খুলনা", "Kishoreganj": "কিশোরগঞ্জ", "Kurigram": "কুড়িগ্রাম", "Kushtia": "কুষ্টিয়া", "Lakshmipur": "লক্ষ্মীপুর", "Lalmonirhat": "লালমনিরহাট", "Madaripur": "মাদারীপুর", "Magura": "মাগুরা", "Manikganj": "মানিকগঞ্জ", "Meherpur": "মেহেরপুর", "Moulvibazar": "মৌলভীবাজার", "Munshiganj": "মুন্সীগঞ্জ", "Mymensingh": "ময়মনসিংহ", "Naogaon": "নওগাঁ", "Narail": "নড়াইল", "Narayanganj": "নারায়ণগঞ্জ", "Narsingdi": "নরসিংদী", "Natore": "নাটোর", "Netrokona": "নেত্রকোণা", "Nilphamari": "নীলফামারী", "Noakhali": "নোয়াখালী", "Pabna": "পাবনা", "Panchagarh": "পঞ্চগড়", "Patuakhali": "পটুয়াখালী", "Pirojpur": "পিরোজপুর", "Rajbari": "রাজবাড়ী", "Rajshahi": "রাজশাহী", "Rangamati": "রাঙ্গামাটি", "Rangpur": "রংপুর", "Satkhira": "সাতক্ষীরা", "Shariatpur": "শরীয়তপুর", "Sherpur": "শেরপুর", "Sirajganj": "সিরাজগঞ্জ", "Sunamganj": "সুনামগঞ্জ", "Sylhet": "সিলেট", "Tangail": "টাঙ্গাইল", "Thakurgaon": "ঠাকুরগাঁও"};
+const BANNERS_BN = [{"title": "সরলতায় সৌন্দর্য", "text": "প্রতিদিনের দরকারি জিনিস, বেছে নেওয়া যত্ন করে। এসে দেখুন।"}, {"eyebrow": "ফ্রি ডেলিভারি", "title": "৳১০০০-এর বেশি কেনাকাটায় ডেলিভারি ফ্রি", "text": "যত বেশি কিনবেন, তত বেশি সাশ্রয়। সব জেলায়।"}, {"eyebrow": "নতুন এসেছে", "title": "প্রতি সপ্তাহেই নতুন পণ্য", "text": "ফ্যাশন, ঘর সাজানো আর বিউটির পছন্দের সব পণ্য।"}, {"eyebrow": "ক্যাশ অন ডেলিভারি", "title": "পণ্য হাতে পেয়ে টাকা দিন", "text": "অ্যাকাউন্ট লাগবে না, ঝামেলাও নেই। শুধু সহজ চেকআউট।"}];
+let lang = 'en';
+try { const sv = localStorage.getItem('monozain-lang'); if(sv === 'bn' || sv === 'en') lang = sv; } catch(e){}
+function t(k){ return (I18N[lang] && I18N[lang][k] !== undefined) ? I18N[lang][k] : (I18N.en[k] !== undefined ? I18N.en[k] : k); }
+function N(x){ const v = String(x); return lang==='bn' ? v.replace(/[0-9]/g, d => '০১২৩৪৫৬৭৮৯'[d]) : v; }
+function catL(c){ return t('cat_' + c); }
+function nameL(p){ return lang==='bn' && PNAME_BN[p.n] ? PNAME_BN[p.n] : p.n; }
+function distL(d){ return lang==='bn' && DISTRICT_BN[d] ? DISTRICT_BN[d] : d; }
+function descL(p){
+  return lang==='bn'
+    ? `${nameL(p)} আমাদের ${catL(p.c)} কালেকশনের একটি পণ্য, বাছাই করা হয়েছে মান, আরাম আর দামের কথা মাথায় রেখে। সহজ ও ভরসাযোগ্য, প্রতিদিনের ব্যবহারে দারুণ মানিয়ে যায়।`
+    : p.desc;
+}
+function bannerL(b, i){ return lang==='bn' ? Object.assign({}, b, BANNERS_BN[i] || {}) : b; }
+
+function renderDistricts(){
+  const sel = document.getElementById('custDistrict');
+  if(!sel) return;
+  const cur = sel.value;
+  sel.innerHTML = `<option value="" disabled ${cur ? '' : 'selected'}>${t('selectDistrict')}</option>` +
+    districts.map(d => `<option value="${d}">${distL(d)}</option>`).join('');
+  sel.value = cur || '';
+}
+function updateSortLabel(){
+  const label = document.getElementById('sortLabel');
+  if(label) label.textContent = sortMode==='lowhigh' ? t('lowhigh') : sortMode==='highlow' ? t('highlow') : t('sort');
+}
+function renderOrderSummary(){
+  const summary = document.getElementById('orderSummary');
+  if(!summary) return;
+  const entries = Object.entries(cart);
+  const total = cartTotal();
+  summary.innerHTML = entries.map(([id,qty])=>{
+    const p = catalog.find(x=>x.id===id);
+    return p ? `<div class="os-item"><span>${nameL(p)} × ${N(qty)}</span><span>৳${N((p.p*qty))}</span></div>` : '';
+  }).join('')
+    + `<div class="os-item"><span>${t('delivery')}</span><span>৳${N((DELIVERY_CHARGE))}</span></div>`
+    + `<div class="os-total"><span>${t('total')}</span><span>৳${N((total+DELIVERY_CHARGE))}</span></div>`;
+}
+function applyLang(){
+  document.documentElement.lang = lang;
+  document.body.classList.toggle('bn', lang==='bn');
+  document.title = t('pageTitle');
+  const yr = N(new Date().getFullYear());
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.innerHTML = t(el.dataset.i18n).replace('{y}', yr);
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => { el.placeholder = t(el.dataset.i18nPh); });
+  document.querySelectorAll('[data-i18n-title]').forEach(el => { el.title = t(el.dataset.i18nTitle); });
+  document.querySelectorAll('[data-cat]').forEach(el => { el.textContent = catL(el.dataset.cat.replace(/&amp;/g,'&')); });
+  document.querySelectorAll('#langPill button').forEach(b => {
+    const on = b.dataset.lang === lang;
+    b.classList.toggle('active', on);
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+  });
+  renderDistricts();
+  renderFilterPanel();
+  updateSortLabel();
+  renderBanner();
+  renderProducts();
+  renderCart();
+  updateCartBadge();
+  if(document.getElementById('searchInput').value.trim()) handleSearchInput();
+  const po = document.getElementById('productOverlay');
+  if(po.classList.contains('open') && currentModalId){ const p = catalog.find(x=>x.id===currentModalId); if(p) renderProductModal(p); }
+  if(document.getElementById('checkoutOverlay').classList.contains('open')){
+    renderOrderSummary();
+    const cb = document.getElementById('confirmBtn');
+    if(!cb.disabled) cb.textContent = t('confirmOrder');
+  }
+}
+function setLang(l){
+  if(l !== 'en' && l !== 'bn') return;
+  lang = l;
+  try { localStorage.setItem('monozain-lang', l); } catch(e){}
+  applyLang();
+}
+
 /* ================= Product data ================= */
 const categories = ["All","Electronics","Gadgets","Bags & Wallets","Watches","Stationery & Gifts"];
 
 const banners = [
-  {bg:"1d9bf0", eyebrow:"Monozain", title:"Beauty in Simplicity", text:"Discover everyday essentials, curated with care.", img:"https://images.unsplash.com/photo-1534452203293-494d7ddbf7e0?w=1400&h=340&fit=crop&auto=format&q=80"},
-  {bg:"7856ff", eyebrow:"Free Delivery", title:"Free delivery over ৳1000", text:"Shop more, save more — across every district.", img:"https://images.unsplash.com/photo-1758351507026-71ad3645cb43?w=1400&h=340&fit=crop&auto=format&q=80"},
-  {bg:"f91880", eyebrow:"New In", title:"Fresh arrivals every week", text:"Fashion, home & beauty picks you'll love.", img:"https://images.unsplash.com/photo-1483985988355-763728e1935b?w=1400&h=340&fit=crop&auto=format&q=80"},
-  {bg:"17bf63", eyebrow:"Cash on Delivery", title:"Pay when it arrives", text:"No account, no hassle — just simple checkout.", img:"https://images.unsplash.com/photo-1758351507026-71ad3645cb43?w=1400&h=340&fit=crop&auto=format&q=80"},
+  {bg:"1d9bf0", c2:"#0a4a9e", eyebrow:"Monozain", title:"Beauty in Simplicity", text:"Discover everyday essentials, curated with care."},
+  {bg:"7856ff", c2:"#3b1fa8", eyebrow:"Free Delivery", title:"Free delivery over ৳1000", text:"Shop more, save more, across every district."},
+  {bg:"f91880", c2:"#a3105a", eyebrow:"New In", title:"Fresh arrivals every week", text:"Fashion, home & beauty picks you'll love."},
+  {bg:"17bf63", c2:"#0a6b3a", eyebrow:"Cash on Delivery", title:"Pay when it arrives", text:"No account, no hassle, just simple checkout."},
 ];
 
 const catalog = [
   // Electronics
-  {n:"Wireless Earbuds Pro", c:"Electronics", p:1450, o:1800, kw:"earbuds,wireless"},
-  {n:"Bluetooth Party Speaker", c:"Electronics", p:2200, o:null, kw:"speaker,bluetooth"},
-  {n:"10000mAh Power Bank", c:"Electronics", p:1150, o:1350, kw:"powerbank,charger"},
-  {n:"USB-C 6-in-1 Hub", c:"Electronics", p:990, o:null, kw:"usb,hub"},
-  {n:"15W Wireless Charger Pad", c:"Electronics", p:750, o:900, kw:"wirelesscharger,phone"},
+  {n:"Wireless Earbuds Pro", c:"Electronics", p:1450, o:1800, img:"https://images.unsplash.com/photo-1757168120889-4317e57a4849?w=500&h=500&fit=crop&auto=format&q=80"},
+  {n:"Bluetooth Party Speaker", c:"Electronics", p:2200, o:null, img:"https://images.unsplash.com/photo-1520390244437-6f1c5eae66ff?w=500&h=500&fit=crop&auto=format&q=80"},
   // Gadgets
-  {n:"Smart LED Strip Light", c:"Gadgets", p:890, o:1050, kw:"ledstrip,light"},
-  {n:"Mini Portable Projector", c:"Gadgets", p:3200, o:3800, kw:"projector,gadget"},
-  {n:"Digital Kitchen Scale", c:"Gadgets", p:520, o:null, kw:"kitchenscale,digital"},
-  {n:"Portable USB Mini Fan", c:"Gadgets", p:450, o:550, kw:"minifan,portable"},
-  {n:"Smart Wi-Fi Plug", c:"Gadgets", p:680, o:null, kw:"smartplug,wifi"},
+  {n:"Smart LED Strip Light", c:"Gadgets", p:890, o:1050, img:"https://images.unsplash.com/photo-1550985616-10810253b84d?w=500&h=500&fit=crop&auto=format&q=80"},
+  {n:"Mini Portable Projector", c:"Gadgets", p:3200, o:3800, img:"https://images.unsplash.com/photo-1478720568477-152d9b164e26?w=500&h=500&fit=crop&auto=format&q=80"},
   // Bags & Wallets
-  {n:"Bifold Leather Wallet", c:"Bags & Wallets", p:590, o:700, kw:"wallet,leather"},
-  {n:"Travel Backpack 35L", c:"Bags & Wallets", p:2100, o:2500, kw:"backpack,travel"},
-  {n:"Women's Crossbody Bag", c:"Bags & Wallets", p:1150, o:null, kw:"handbag,fashion"},
-  {n:"14-inch Laptop Sleeve", c:"Bags & Wallets", p:680, o:820, kw:"laptopbag,sleeve"},
-  {n:"Coin & Card Pouch", c:"Bags & Wallets", p:290, o:null, kw:"pouch,wallet"},
+  {n:"Bifold Leather Wallet", c:"Bags & Wallets", p:590, o:700, img:"https://images.unsplash.com/photo-1627123424574-724758594e93?w=500&h=500&fit=crop&auto=format&q=80"},
+  {n:"Travel Backpack 35L", c:"Bags & Wallets", p:2100, o:2500, img:"https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=500&h=500&fit=crop&auto=format&q=80"},
   // Watches
-  {n:"Minimalist Analog Watch", c:"Watches", p:1400, o:1700, kw:"watch,analog"},
-  {n:"Smart Fitness Watch", c:"Watches", p:2800, o:3400, kw:"smartwatch,fitness"},
-  {n:"Digital Sports Watch", c:"Watches", p:950, o:null, kw:"watch,sports"},
-  {n:"Chronograph Steel Watch", c:"Watches", p:2450, o:2900, kw:"watch,chronograph"},
-  {n:"Kids Cartoon Watch", c:"Watches", p:390, o:480, kw:"kidswatch,toy"},
+  {n:"Minimalist Analog Watch", c:"Watches", p:1400, o:1700, img:"https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=500&h=500&fit=crop&auto=format&q=80"},
+  {n:"Smart Fitness Watch", c:"Watches", p:2800, o:3400, img:"https://images.unsplash.com/photo-1546868871-7041f2a55e12?w=500&h=500&fit=crop&auto=format&q=80"},
   // Stationery & Gifts
-  {n:"Hardcover Notebook Set", c:"Stationery & Gifts", p:390, o:null, kw:"notebook,stationery"},
-  {n:"Premium Gift Box", c:"Stationery & Gifts", p:650, o:800, kw:"giftbox,present"},
-  {n:"Executive Pen Set", c:"Stationery & Gifts", p:480, o:null, kw:"pen,stationery"},
-  {n:"Desk Organizer Tray", c:"Stationery & Gifts", p:560, o:680, kw:"deskorganizer,office"},
-  {n:"Greeting Card Pack (10pc)", c:"Stationery & Gifts", p:250, o:null, kw:"greetingcard,paper"},
+  {n:"Hardcover Notebook Set", c:"Stationery & Gifts", p:390, o:null, img:"https://images.unsplash.com/photo-1531346878377-a5be20888e57?w=500&h=500&fit=crop&auto=format&q=80"},
+  {n:"Premium Gift Box", c:"Stationery & Gifts", p:650, o:800, img:"https://images.unsplash.com/photo-1549465220-1a8b9238cd48?w=500&h=500&fit=crop&auto=format&q=80"},
 ];
 catalog.forEach((p,i) => {
   p.id = "p"+i;
-  p.img = `https://loremflickr.com/500/500/${p.kw}`;
-  p.desc = `${p.n} from our ${p.c} collection — chosen for everyday quality, comfort and value. A simple, reliable pick that fits right into your routine.`;
+  p.desc = `${nameL(p)} from our ${catL(p.c)} collection, chosen for everyday quality, comfort and value. A simple, reliable pick that fits right into your routine.`;
 });
-// Verified real photos for confirmed items
-catalog.find(p=>p.n==="Wireless Earbuds Pro").img = "https://images.unsplash.com/photo-1757168120889-4317e57a4849?w=500&h=500&fit=crop&auto=format&q=80";
-catalog.find(p=>p.n==="Bluetooth Party Speaker").img = "https://images.unsplash.com/photo-1520390244437-6f1c5eae66ff?w=500&h=500&fit=crop&auto=format&q=80";
-catalog.find(p=>p.n==="10000mAh Power Bank").img = "https://images.unsplash.com/photo-1706275399494-fb26bbc5da63?w=500&h=500&fit=crop&auto=format&q=80";
-catalog.find(p=>p.n==="USB-C 6-in-1 Hub").img = "https://images.unsplash.com/photo-1763161786687-43d0c9babdf0?w=500&h=500&fit=crop&auto=format&q=80";
 
-const districts = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalokati","Jhenaidah","Joypurhat","Khagrachhari","Khulna","Kishoreganj","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"];
+const districts = ["Bagerhat","Bandarban","Barguna","Barishal","Bhola","Bogura","Brahmanbaria","Chandpur","Chapainawabganj","Chattogram","Chuadanga","Cox's Bazar","Cumilla","Dhaka","Dinajpur","Faridpur","Feni","Gaibandha","Gazipur","Gopalganj","Habiganj","Jamalpur","Jashore","Jhalokati","Jhenaidah","Joypurhat","Khagrachhari","Khulna","Kishoreganj","Kurigram","Kushtia","Lakshmipur","Lalmonirhat","Madaripur","Magura","Manikganj","Meherpur","Moulvibazar","Munshiganj","Mymensingh","Naogaon","Narail","Narayanganj","Narsingdi","Natore","Netrokona","Nilphamari","Noakhali","Pabna","Panchagarh","Patuakhali","Pirojpur","Rajbari","Rajshahi","Rangamati","Rangpur","Satkhira","Shariatpur","Sherpur","Sirajganj","Sunamganj","Sylhet","Tangail","Thakurgaon"];
 
 /* ================= State ================= */
 let activeCat = "All";
@@ -713,12 +848,12 @@ let cart = loadCart(); // id -> qty
 /* ================= Render: category filter ================= */
 function renderFilterPanel(){
   document.getElementById('filterPanel').innerHTML = categories.map(c =>
-    `<div class="filter-option${c===activeCat?' selected':''}" onclick="setCategory('${c.replace(/'/g,"\\'")}')">${c}</div>`
+    `<div class="filter-option${c===activeCat?' selected':''}" onclick="setCategory('${c.replace(/'/g,"\\'")}')">${catL(c)}</div>`
   ).join('');
   document.getElementById('filterBtn').classList.toggle('active-filter', activeCat!=="All");
   const chipHolder = document.getElementById('activeFilterChip');
   chipHolder.innerHTML = activeCat!=="All"
-    ? `<div class="filter-chip">${activeCat}<span class="fc-x" onclick="setCategory('All')">✕</span></div>`
+    ? `<div class="filter-chip">${catL(activeCat)}<span class="fc-x" onclick="setCategory('All')">✕</span></div>`
     : '';
 }
 function toggleFilterPanel(){
@@ -732,8 +867,7 @@ function toggleSortPanel(){
 let sortMode = "default";
 function setSort(mode){
   sortMode = mode;
-  const label = document.getElementById('sortLabel');
-  label.textContent = mode==='lowhigh' ? 'Price: Low to High' : mode==='highlow' ? 'Price: High to Low' : 'Sort';
+  updateSortLabel();
   document.getElementById('sortBtn').classList.toggle('active-filter', mode!=='default');
   document.getElementById('sortPanel').classList.remove('open');
   renderProducts();
@@ -762,23 +896,25 @@ function renderProducts(){
   let items = catalog.filter(p => (activeCat==="All" || p.c===activeCat));
   if(sortMode === 'lowhigh') items = items.slice().sort((a,b) => a.p - b.p);
   else if(sortMode === 'highlow') items = items.slice().sort((a,b) => b.p - a.p);
-  document.getElementById('resultInfo').textContent = `${items.length} product${items.length!==1?'s':''}${activeCat!=="All" ? " in "+activeCat : ""}`;
+  document.getElementById('resultInfo').textContent = lang==='bn'
+    ? (activeCat!=="All" ? `${catL(activeCat)} ক্যাটাগরিতে ${N(items.length)}টি পণ্য` : `${N(items.length)}টি পণ্য`)
+    : `${items.length} product${items.length!==1?'s':''}${activeCat!=="All" ? " in "+activeCat : ""}`;
   const grid = document.getElementById('productGrid');
   if(items.length===0){
-    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">No products found. Try a different category.</div>`;
+    grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1;">${t('noProducts')}</div>`;
     return;
   }
   grid.innerHTML = items.map(p => `
     <div class="card" onclick="openProductModal('${p.id}')">
-      <div class="thumb"><img src="${p.img}" alt="${p.n}" loading="lazy"></div>
+      <div class="thumb"><img src="${p.img}" alt="${nameL(p)}" loading="lazy"></div>
       <div class="body">
-        <div class="pname">${p.n}</div>
+        <div class="pname">${nameL(p)}</div>
         <div class="price-row">
-          <span><span class="price">৳${p.p}</span>${p.o ? `<span class="old-price">৳${p.o}</span>` : ''}</span>
+          <span><span class="price">৳${N(p.p)}</span>${p.o ? `<span class="old-price">৳${N(p.o)}</span>` : ''}</span>
         </div>
         <button class="add-btn" id="btn-${p.id}" onclick="event.stopPropagation(); addToCart('${p.id}')">
-          <img class="ui-icon" data-icon="lucide:plus" src="https://api.iconify.design/lucide:plus.svg" width="14" height="14" alt="">
-          Add to cart
+          <svg class="ui-icon" data-icon="lucide:plus" xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M12 5v14"/></svg>
+          ${t('addToCart')}
         </button>
       </div>
     </div>
@@ -786,19 +922,20 @@ function renderProducts(){
 }
 
 /* ================= Search dropdown ================= */
+function escHtml(v){ return String(v).replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch])); }
 function handleSearchInput(){
   const q = document.getElementById('searchInput').value.trim().toLowerCase();
   const box = document.getElementById('searchResults');
   if(!q){ box.classList.remove('open'); box.innerHTML = ''; return; }
-  const matches = catalog.filter(p => p.n.toLowerCase().includes(q)).slice(0, 8);
+  const matches = catalog.filter(p => p.n.toLowerCase().includes(q) || nameL(p).toLowerCase().includes(q)).slice(0, 8);
   box.innerHTML = matches.length
     ? matches.map(p => `
         <div class="sr-item" onclick="selectSearchResult('${p.id}')">
-          <div class="thumb"><img src="${p.img}" alt="${p.n}"></div>
-          <div class="info"><div class="name">${p.n}</div><div class="cat">${p.c}</div></div>
-          <div class="price">৳${p.p}</div>
+          <div class="thumb"><img src="${p.img}" alt="${nameL(p)}"></div>
+          <div class="info"><div class="name">${nameL(p)}</div><div class="cat">${catL(p.c)}</div></div>
+          <div class="price">৳${N(p.p)}</div>
         </div>`).join('')
-    : `<div class="sr-empty">No products match "${q}"</div>`;
+    : `<div class="sr-empty">${t('noMatch').replace('{q}', escHtml(q))}</div>`;
   box.classList.add('open');
 }
 function selectSearchResult(id){
@@ -820,10 +957,10 @@ function addToCart(id){
   if(btn){
     btn.classList.add('added');
     const old = btn.innerHTML;
-    btn.innerHTML = 'Added ✓';
+    btn.innerHTML = t('added');
     setTimeout(()=>{ btn.classList.remove('added'); btn.innerHTML = old; }, 900);
   }
-  showToast("Added to cart");
+  showToast(t('addedToast'));
 }
 function changeQty(id, delta){
   if(!cart[id]) return;
@@ -849,7 +986,7 @@ function cartTotal(){
 function updateCartBadge(){
   const badge = document.getElementById('cartBadge');
   const n = cartCount();
-  badge.textContent = n;
+  badge.textContent = N(n);
   badge.style.display = n>0 ? 'flex' : 'none';
 }
 function renderCart(){
@@ -857,8 +994,8 @@ function renderCart(){
   const footer = document.getElementById('cartFooter');
   const entries = Object.entries(cart);
   if(entries.length===0){
-    body.innerHTML = `<div class="empty-state">Your cart is empty.<br>Start adding products you like!</div>`;
-    footer.innerHTML = `<button class="cta-btn secondary" onclick="closeCart()">Continue shopping</button>`;
+    body.innerHTML = `<div class="empty-state">${t('cartEmpty')}</div>`;
+    footer.innerHTML = `<button class="cta-btn secondary" onclick="closeCart()">${t('continueShopping')}</button>`;
     return;
   }
   body.innerHTML = entries.map(([id,qty]) => {
@@ -866,26 +1003,26 @@ function renderCart(){
     if(!p) return '';
     return `
       <div class="cart-item" onclick="openProductModal('${id}')" style="cursor:pointer;">
-        <div class="thumb"><img src="${p.img}" alt="${p.n}"></div>
+        <div class="thumb"><img src="${p.img}" alt="${nameL(p)}"></div>
         <div class="info">
-          <div class="name">${p.n}</div>
-          <div class="cat">${p.c} · ৳${p.p} each</div>
+          <div class="name">${nameL(p)}</div>
+          <div class="cat">${catL(p.c)} · ৳${N(p.p)} ${t('each')}</div>
           <div class="qty-row">
-            <div class="qty-btn" onclick="event.stopPropagation(); changeQty('${id}',-1)">–</div>
-            <span>${qty}</span>
+            <div class="qty-btn" onclick="event.stopPropagation(); changeQty('${id}',-1)">−</div>
+            <span>${N(qty)}</span>
             <div class="qty-btn" onclick="event.stopPropagation(); changeQty('${id}',1)">+</div>
-            <span class="price">৳${p.p*qty}</span>
-            <span class="remove-link" onclick="event.stopPropagation(); removeFromCart('${id}')">Remove</span>
+            <span class="price">৳${N(p.p*qty)}</span>
+            <span class="remove-link" onclick="event.stopPropagation(); removeFromCart('${id}')">${t('remove')}</span>
           </div>
         </div>
       </div>`;
   }).join('');
   const total = cartTotal();
   footer.innerHTML = `
-    <div class="total-row"><span>Subtotal</span><span>৳${total}</span></div>
-    <div class="total-row"><span>Delivery</span><span>৳${DELIVERY_CHARGE}</span></div>
-    <div class="total-row grand"><span>Total</span><span>৳${total+DELIVERY_CHARGE}</span></div>
-    <button class="cta-btn primary" onclick="openCheckout()">Proceed to checkout</button>
+    <div class="total-row"><span>${t('subtotal')}</span><span>৳${N(total)}</span></div>
+    <div class="total-row"><span>${t('delivery')}</span><span>৳${N(DELIVERY_CHARGE)}</span></div>
+    <div class="total-row grand"><span>${t('total')}</span><span>৳${N(total+DELIVERY_CHARGE)}</span></div>
+    <button class="cta-btn primary" onclick="openCheckout()">${t('proceed')}</button>
   `;
 }
 
@@ -905,21 +1042,13 @@ function closeCart(){ document.getElementById('cartOverlay').classList.remove('o
 
 /* ================= Checkout ================= */
 function openCheckout(){
-  if(cartCount()===0){ showToast("Your cart is empty"); return; }
+  if(cartCount()===0){ showToast(t('cartEmptyToast')); return; }
   closeCart();
-  const summary = document.getElementById('orderSummary');
-  const entries = Object.entries(cart);
-  const total = cartTotal();
-  summary.innerHTML = entries.map(([id,qty])=>{
-    const p = catalog.find(x=>x.id===id);
-    return `<div class="os-item"><span>${p.n} × ${qty}</span><span>৳${p.p*qty}</span></div>`;
-  }).join('')
-    + `<div class="os-item"><span>Delivery</span><span>৳${DELIVERY_CHARGE}</span></div>`
-    + `<div class="os-total"><span>Total</span><span>৳${total+DELIVERY_CHARGE}</span></div>`;
+  renderOrderSummary();
   document.getElementById('checkoutMsg').textContent = '';
   document.getElementById('checkoutMsg').className = 'form-msg';
   document.getElementById('confirmBtn').disabled = false;
-  document.getElementById('confirmBtn').textContent = 'Confirm Order';
+  document.getElementById('confirmBtn').textContent = t('confirmOrder');
   loadDraft();
   document.getElementById('checkoutOverlay').classList.add('open');
   lockScroll();
@@ -935,14 +1064,14 @@ function handleDraftInput(){
   const indicator = document.getElementById('saveIndicator');
   indicator.classList.remove('saved');
   indicator.classList.add('show');
-  indicator.innerHTML = `Saving…`;
+  indicator.innerHTML = t('saving');
   clearTimeout(draftSaveTimer);
   draftSaveTimer = setTimeout(() => {
     const draft = {};
     draftFieldIds.forEach(id => { draft[id] = document.getElementById(id).value; });
     try { localStorage.setItem(DRAFT_KEY, JSON.stringify(draft)); } catch(e){}
     indicator.classList.add('saved');
-    indicator.innerHTML = `Saved`;
+    indicator.innerHTML = t('saved');
     setTimeout(() => { indicator.classList.remove('show'); }, 1500);
   }, 600);
 }
@@ -962,7 +1091,7 @@ function clearCheckoutForm(){
   const indicator = document.getElementById('saveIndicator');
   indicator.classList.remove('show','saved');
   indicator.innerHTML = '';
-  showToast("Form cleared");
+  showToast(t('formCleared'));
 }
 
 /*
@@ -1014,13 +1143,13 @@ async function submitOrder(e){
   };
 
   btn.disabled = true;
-  btn.textContent = 'Placing order…';
+  btn.textContent = t('placing');
   const result = await sendOrderToSheet(order);
 
   if(result.ok){
     msg.textContent = result.simulated
-      ? "Order captured! (Connect the spreadsheet URL to record it automatically.)"
-      : "Order placed successfully! We'll contact you soon.";
+      ? t('orderCaptured')
+      : t('orderPlaced');
     msg.className = 'form-msg success';
     cart = {};
     saveCart();
@@ -1029,34 +1158,67 @@ async function submitOrder(e){
     try { localStorage.removeItem(DRAFT_KEY); } catch(err){}
     document.getElementById('saveIndicator').classList.remove('show','saved');
     document.getElementById('saveIndicator').innerHTML = '';
-    btn.textContent = 'Order Confirmed ✓';
+    btn.textContent = t('orderConfirmed');
     setTimeout(()=>{ closeCheckout(); }, 1800);
   } else {
-    msg.textContent = "Something went wrong placing your order. Please try again.";
+    msg.textContent = t('orderError');
     msg.className = 'form-msg error';
     btn.disabled = false;
-    btn.textContent = 'Confirm Order';
+    btn.textContent = t('confirmOrder');
   }
   return false;
 }
 
 /* ================= Banner carousel ================= */
+
+/* ================= Banner artwork (inline SVG, always loads) ================= */
+const BANNER_ICONS = [
+  // sparkles
+  `<path d="M1180 70l22 58 58 22-58 22-22 58-22-58-58-22 58-22z"/><path d="M1290 190l12 30 30 12-30 12-12 30-12-30-30-12 30-12z"/><path d="M1060 210l10 24 24 10-24 10-10 24-10-24-24-10 24-10z"/>`,
+  // delivery truck
+  `<rect x="1020" y="110" width="170" height="110" rx="10"/><path d="M1190 150h60l40 40v30h-100z"/><circle cx="1075" cy="235" r="24"/><circle cx="1250" cy="235" r="24"/>`,
+  // gift box
+  `<rect x="1060" y="130" width="220" height="130" rx="10"/><path d="M1060 175h220M1170 130v130"/><path d="M1170 130c-40-60-100-40-80 0M1170 130c40-60 100-40 80 0"/>`,
+  // banknote
+  `<rect x="1020" y="110" width="270" height="150" rx="16"/><circle cx="1155" cy="185" r="38"/><circle cx="1060" cy="185" r="8"/><circle cx="1250" cy="185" r="8"/>`
+];
+function bannerArt(i){
+  return `<svg class="bs-art" xmlns="http://www.w3.org/2000/svg" viewBox="1000 50 320 230" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${BANNER_ICONS[i % BANNER_ICONS.length]}</svg>`;
+}
 let bannerIndex = 0, bannerTimer;
 function renderBanner(){
   const el = document.getElementById('banner');
-  el.innerHTML = banners.map((b,i) => `
-    <div class="banner-slide${i===0?' active':''}" style="background:linear-gradient(135deg, rgba(0,0,0,.5), rgba(0,0,0,.35)), url('${b.img}') center/cover;">
+  el.innerHTML = banners.map((b0,i) => { const b = bannerL(b0, i); return `
+    <div class="banner-slide${i===0?' active':''}" style="--b1:#${b.bg};--b2:${b.c2};" aria-hidden="${i===0?'false':'true'}">
+      <div class="bs-shade"></div>
+      ${bannerArt(i)}
       <div class="bs-inner">
         <div class="bs-eyebrow">${b.eyebrow}</div>
         <h2>${b.title}</h2>
         <p>${b.text}</p>
+        <button class="bs-cta" type="button" onclick="document.querySelector('.shop-wrap').scrollIntoView({behavior:'smooth',block:'start'})">${t('shopNow')}</button>
       </div>
     </div>
-  `).join('') + `<div class="banner-dots">${banners.map((_,i)=>`<div class="banner-dot${i===0?' active':''}" onclick="goToBanner(${i})"></div>`).join('')}</div>`;
+  `; }).join('') + `<div class="banner-dots">${banners.map((_,i)=>`<div class="banner-dot${i===0?' active':''}" onclick="goToBanner(${i}); resetBannerTimer();"></div>`).join('')}</div>`;
+  goToBanner(bannerIndex);
+  if(el.dataset.bound) return;
+  el.dataset.bound = '1';
+  // swipe + pause on hover/touch
+  let x0=null;
+  el.addEventListener('touchstart', e=>{ x0=e.touches[0].clientX; clearInterval(bannerTimer); }, {passive:true});
+  el.addEventListener('touchend', e=>{
+    if(x0!==null){
+      const dx=e.changedTouches[0].clientX-x0;
+      if(Math.abs(dx)>40) goToBanner((bannerIndex + (dx<0?1:-1) + banners.length) % banners.length);
+    }
+    x0=null; resetBannerTimer();
+  }, {passive:true});
+  el.addEventListener('mouseenter', ()=>clearInterval(bannerTimer));
+  el.addEventListener('mouseleave', resetBannerTimer);
 }
 function goToBanner(i){
   bannerIndex = i;
-  document.querySelectorAll('.banner-slide').forEach((s,idx)=> s.classList.toggle('active', idx===i));
+  document.querySelectorAll('.banner-slide').forEach((s,idx)=>{ s.classList.toggle('active', idx===i); s.setAttribute('aria-hidden', idx===i?'false':'true'); });
   document.querySelectorAll('.banner-dot').forEach((d,idx)=> d.classList.toggle('active', idx===i));
   resetBannerTimer();
 }
@@ -1068,47 +1230,49 @@ function resetBannerTimer(){
 
 /* ================= Product detail modal ================= */
 let modalQty = 1;
+let currentModalId = null;
 function openProductModal(id){
   const p = catalog.find(x=>x.id===id);
   if(!p) return;
   modalQty = 1;
+  currentModalId = id;
   renderProductModal(p);
   document.getElementById('productOverlay').classList.add('open');
   lockScroll();
 }
 function renderProductModal(p){
   document.getElementById('productDetailBody').innerHTML = `
-    <div class="pd-image"><img src="${p.img}" alt="${p.n}"></div>
+    <div class="pd-image"><img src="${p.img}" alt="${nameL(p)}"></div>
     <div class="pd-content">
-      <div class="pd-cat">${p.c}</div>
-      <div class="pd-name">${p.n}</div>
+      <div class="pd-cat">${catL(p.c)}</div>
+      <div class="pd-name">${nameL(p)}</div>
       <div class="pd-price-row">
-        <span class="pd-price">৳${p.p}</span>
-        ${p.o ? `<span class="pd-old">৳${p.o}</span>` : ''}
+        <span class="pd-price">৳${N(p.p)}</span>
+        ${p.o ? `<span class="pd-old">৳${N(p.o)}</span>` : ''}
       </div>
-      <div class="pd-desc">${p.desc}</div>
+      <div class="pd-desc">${descL(p)}</div>
       <div class="pd-qty-row">
-        <div class="qty-btn" onclick="changeModalQty(-1)">–</div>
-        <span class="qty-val" id="modalQtyVal">${modalQty}</span>
+        <div class="qty-btn" onclick="changeModalQty(-1)">−</div>
+        <span class="qty-val" id="modalQtyVal">${N(modalQty)}</span>
         <div class="qty-btn" onclick="changeModalQty(1)">+</div>
       </div>
-      <button class="cta-btn primary" onclick="addToCartFromModal('${p.id}')">Add to cart</button>
+      <button class="cta-btn primary" onclick="addToCartFromModal('${p.id}')">${t('addToCart')}</button>
     </div>
   `;
 }
 function changeModalQty(delta){
   modalQty = Math.max(1, modalQty + delta);
-  document.getElementById('modalQtyVal').textContent = modalQty;
+  document.getElementById('modalQtyVal').textContent = N(modalQty);
 }
 function addToCartFromModal(id){
   cart[id] = (cart[id]||0) + modalQty;
   saveCart();
   updateCartBadge();
   renderCart();
-  showToast("Added to cart");
+  showToast(t('addedToast'));
   closeProductModal();
 }
-function closeProductModal(){ document.getElementById('productOverlay').classList.remove('open'); unlockScroll(); }
+function closeProductModal(){ document.getElementById('productOverlay').classList.remove('open'); currentModalId = null; unlockScroll(); }
 
 
 let toastTimer;
@@ -1120,39 +1284,57 @@ function showToast(text){
   toastTimer = setTimeout(()=> t.classList.remove('show'), 1600);
 }
 
+
+/* ================= Image fallback ================= */
+const FALLBACK_COLORS = {"Electronics":"#1d9bf0","Gadgets":"#7856ff","Bags & Wallets":"#f91880","Watches":"#17bf63","Stationery & Gifts":"#ff7a00"};
+function fallbackImg(cat){
+  const c = FALLBACK_COLORS[cat] || "#1d9bf0";
+  const svg = `<svg xmlns="http://www.w3.org/2000/svg" width="500" height="500" viewBox="0 0 500 500"><rect width="500" height="500" fill="${c}" fill-opacity=".14"/><g fill="none" stroke="${c}" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"><rect x="160" y="190" width="180" height="130" rx="18"/><circle cx="250" cy="255" r="32"/><path d="M215 190l12-24h46l12 24"/></g></svg>`;
+  return "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svg);
+}
+document.addEventListener('error', (e) => {
+  const el = e.target;
+  if(!el || el.tagName !== 'IMG' || el.dataset.fb) return;
+  const p = catalog.find(x => x.img === el.getAttribute('src'));
+  if(!p) return;
+  el.dataset.fb = '1';
+  el.src = fallbackImg(p.c);
+}, true);
+
 /* ================= Theme ================= */
-function iconifyUrl(name, hex){ return `https://api.iconify.design/${name}.svg?color=%23${hex}`; }
-function currentIconHex(){ return document.body.classList.contains('dark') ? 'e7e9ea' : '0f1419'; }
-function refreshIcons(){
-  const hex = currentIconHex();
-  document.querySelectorAll('.ui-icon').forEach(el => { el.src = iconifyUrl(el.dataset.icon, hex); });
+const ICON_PATHS = {sun:`<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/>`,moon:`<path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>`};
+function setThemeIcon(){
+  const el = document.getElementById('themeIcon');
+  if(el) el.innerHTML = ICON_PATHS[document.body.classList.contains('dark') ? 'sun' : 'moon'];
 }
 function toggleTheme(){
   document.body.classList.toggle('dark');
   localStorage.setItem('monozain-theme', document.body.classList.contains('dark') ? 'dark' : 'light');
-  document.getElementById('themeIcon').dataset.icon = document.body.classList.contains('dark') ? 'lucide:sun' : 'lucide:moon';
-  refreshIcons();
-  syncXIcon();
+  setThemeIcon();
   renderProducts(); // refresh placeholder image colors not needed, but keep UI in sync
-}
-function syncXIcon(){
-  const xIcon = document.getElementById('xIcon');
-  if(xIcon) xIcon.src = document.body.classList.contains('dark') ? 'https://cdn.simpleicons.org/x/E7E9EA' : 'https://cdn.simpleicons.org/x/0F1419';
 }
 (function initTheme(){
   const saved = localStorage.getItem('monozain-theme');
   if(saved === 'dark') document.body.classList.add('dark');
 })();
 
+/* ================= Keyboard support ================= */
+document.addEventListener('keydown', (e) => {
+  const el = e.target;
+  if((e.key === 'Enter' || e.key === ' ') && el && el.matches && el.matches('.icon-circle[role="button"]')){
+    e.preventDefault(); el.click(); return;
+  }
+  if(e.key === 'Escape'){
+    if(document.getElementById('productOverlay').classList.contains('open')) closeProductModal();
+    else if(document.getElementById('checkoutOverlay').classList.contains('open')) closeCheckout();
+    else if(document.getElementById('cartDrawer').classList.contains('open')) closeCart();
+  }
+});
+
 /* ================= Init ================= */
-document.getElementById('footerYear').textContent = new Date().getFullYear();
-document.getElementById('custDistrict').innerHTML += districts.map(d=>`<option value="${d}">${d}</option>`).join('');
-renderBanner();
 resetBannerTimer();
-renderFilterPanel();
-renderProducts();
-refreshIcons();
-syncXIcon();
+applyLang();
+setThemeIcon();
 updateCartBadge();
 renderCart();
 </script>
